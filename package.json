@@ -1,4 +1,5 @@
 {
+  "homepage": "https://renangomes1512.github.io/",
   "name": "arretech",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
@@ -19,9 +22,7 @@
     "react-icons": "^5.7.0",
     "react-router": "^8.3.0",
     "tailwindcss": "^4.3.3",
-    "yarn": "^1.22.22",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

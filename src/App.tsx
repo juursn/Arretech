@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="ArreTech/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   )
