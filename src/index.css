@@ -1,15 +1,103 @@
 @import "tailwindcss";
 
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+* {
+	font-family: "Montserrat", sans-serif;
 }
 
+body,
+html,
+#root {
+	height: 100dvh;
+}
+
+@keyframes slide {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+:root {
+	--icon-gradient: url(#meuGradienteLight);
+}
+.dark {
+	--icon-gradient: url(#meuGradienteDark);
+}
+.icon-gradient path {
+	fill: var(--icon-gradient);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --animate-slide: slide 16s linear infinite;
+	--animate-slide: slide 16s linear infinite;
+	/*Colors Glass*/
+	--color-light-glass: rgba(255, 255, 255, 0.8);
+	--color-dark-glass: rgba(27, 27, 27, 0.8);
+	/*Backgound*/
+	--color-light: #ffffff;
+	--color-dark: #161616;
+
+	/*PrimaryBlue*/
+	--color-primary-blue: #2f91ff;
+
+	/*BadgesBlue*/
+	--color-light-badge: #dfe8f3;
+	--color-dark-badge: #2a2a2a;
+	/*iconBadge*/
+	--color-L-icon-badge: rgba(127, 127, 127, 0.6);
+	--color-D-icon-badge: rgba(127, 127, 127, 1);
+
+	/*TextGray*/
+	--color-text-gray: #595959;
+
+	/*Primary Gradient*/
+	--gradient-blue: linear-gradient(
+		to right,
+		#4fb6ff 0%,
+		#2f91ff 50%,
+		#2f91ff 100%
+	);
+
+	/* Ajustado para --gradient-babyBlue para bater com a utilidade */
+	--gradient-babyBlue: linear-gradient(
+		to right,
+		#a4d9ff 16%,
+		#b8e2ff 61%,
+		#ffffff 100%
+	);
+
+	/* gradient-purple */
+	--gradient-purple: linear-gradient(
+		to right,
+		#4fb6ff 31%,
+		#235fc7 71%,
+		#3e5bdd 98%
+	);
+}
+@utility text-gradient-purple {
+	background-image: var(--gradient-purple);
+	background-clip: text;
+	color: transparent;
+}
+
+@utility text-gradient-blue {
+	background-image: var(--gradient-blue);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	fill: currentColor;
+}
+
+@utility text-gradient-babyBlue {
+	background-image: var(--gradient-babyBlue);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	fill: currentColor;
 }

@@ -1,4 +1,5 @@
-import logoAzul from './logo-arretech.png'
+import logoAzul from "./logo-arretech.png"
+import logoBranca from "./logo-white-arretech.png"
 import painel from "./painel.png"
 import titulo from "./titulo.png"
 import inteligencia from "./inteligencia.png"
@@ -24,28 +25,29 @@ import coment from "./coment.png"
 import img3 from "./image3.png"
 
 export {
-    logoAzul,
-    painel,
-    titulo,
-    inteligencia,
-    agil,
-    auto,
-    suporte,
-    inovativa,
-    sebrae,
-    nacional,
-    startup,
-    impulse,
-    move,
-    nvidia,
-    pesquisaai,
-    processamneto,
-    seguranca,
-    chatbot,
-    visao,
-    analise,
-    business,
-    aspas,
-    coment,
-    img3
+	logoAzul,
+	logoBranca,
+	painel,
+	titulo,
+	inteligencia,
+	agil,
+	auto,
+	suporte,
+	inovativa,
+	sebrae,
+	nacional,
+	startup,
+	impulse,
+	move,
+	nvidia,
+	pesquisaai,
+	processamneto,
+	seguranca,
+	chatbot,
+	visao,
+	analise,
+	business,
+	aspas,
+	coment,
+	img3,
 }
