@@ -20,10 +20,51 @@ import { Cards, Cards2, Cards3, Cards4, Cards5 } from "../../components/cards"
 import { Eventos } from "../../components/eventos"
 import { Footer } from "../../components/Footer/Footer"
 import { Hero } from "../../components/Hero/Hero"
+import { NavBar } from "../../components/NavBar/NavBar"
+import { useState, useEffect, useRef } from "react"
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react"
 
 export const Home = () => {
+	const [showElement, setShowElement] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			window.scrollY > 300 ? setShowElement(true) : setShowElement(false)
+		}
+
+		window.addEventListener("scroll", handleScroll)
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll)
+		}
+	}, [])
+
+	const carrosselRef = useRef<HTMLDivElement>(null)
+	const [showLeft, setShowLeft] = useState(false)
+
+	const irParaDireita = () => {
+		carrosselRef.current?.scrollBy({
+			left: 390,
+			behavior: "smooth",
+		})
+	}
+
+	const irParaEsquerda = () => {
+		carrosselRef.current?.scrollBy({
+			left: -390,
+			behavior: "smooth",
+		})
+	}
+
+	const verificarScroll = (e: React.UIEvent<HTMLDivElement>) => {
+		const elemento = e.currentTarget
+
+		setShowLeft(elemento.scrollLeft > 0)
+	}
+
 	return (
 		<body className="w-full">
+			{showElement && <NavBar />}
 			<header className=" flex flex-col items-center relative w-full mt-7">
 				<nav className="flex justify-center w-[95%]">
 					<img
@@ -52,13 +93,17 @@ export const Home = () => {
 							patamares de eficiência e competitividade no mercado digital.
 						</p>
 					</div>
-					<div className="flex flex-col items-center">
+					<div className="flex flex-col items-center justify-center">
 						<div className="w-full ">
 							<h1 className="text-4xl font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 								O que oferecemos ?
 							</h1>
 						</div>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-4 min-w-full">
+						<div
+							className="relative flex sm:flex-col gap-5 mt-15 overflow-x-auto scroll-smooth w-full"
+							ref={carrosselRef}
+							onScroll={verificarScroll}
+						>
 							<Cards
 								imagem={inteligencia}
 								subtitulo="Inteligência Artificial"
@@ -80,6 +125,17 @@ export const Home = () => {
 								texto="Equipe dedicada de especialistas em IA para garantir o sucesso dos seus projetos."
 							/>
 						</div>
+						<button className="absolute flex right-10" onClick={irParaDireita}>
+							<CaretRightIcon />
+						</button>
+						{showLeft && (
+							<button
+								className="absolute flex left-10"
+								onClick={irParaEsquerda}
+							>
+								<CaretLeftIcon />
+							</button>
+						)}
 					</div>
 					<div className="flex flex-col items-center">
 						<div className="flex flex-col items-center gap-10">

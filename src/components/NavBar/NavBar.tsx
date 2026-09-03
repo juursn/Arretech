@@ -33,6 +33,7 @@ export const NavBar = () => {
 				</div>
 
 				{/* Links Desktop */}
+
 				<nav className="items-center hidden gap-10 font-medium sm:flex">
 					<NavLink
 						to="/Arretech/Noticias"
@@ -85,6 +86,7 @@ export const NavBar = () => {
 			</div>
 
 			{/* Menu Dropdown Mobile */}
+
 			{isOpen && (
 				<div className="flex flex-col items-center gap-5 py-4 sm:hidden ">
 					<NavLink

@@ -12,7 +12,7 @@ export const Header = () => {
 			<div className="flex hidden gap-15 sm:flex">
 				<NavLink to="/">Sobre nós</NavLink>
 				<NavLink to="/">Contatos</NavLink>
-				<NavLink to="/">Serviços</NavLink>
+				<NavLink to="/Arretech/Servicos">Serviços</NavLink>
 			</div>
 			<div>
 				<button className=" p-1.5 rounded-2xl bg-white text-black ">
@@ -28,3 +28,5 @@ export const Header = () => {
 		</div>
 	)
 }
+
+
