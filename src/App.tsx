@@ -1,28 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router"
-import AOS from "aos"
-import "aos/dist/aos.css"
-import { useEffect } from "react"
-import { Servicos } from "./pages/Servicos"
 import { IconGradient } from "./components/Icon/IconGradient"
-
-import { Home } from "./pages/Home/index"
+import { NavBar } from "./components/NavBar/NavBar"
+import { Footer } from "./components/Footer/Footer"
+import { AppRoutes } from "./router/AppRoutes"
 
 export const App = () => {
-	useEffect(() => {
-		AOS.init({
-			duration: 600,
-			once: false,
-			easing: "ease",
-		})
-	}, [])
 	return (
 		<>
 			<IconGradient />
-
-			<Routes>
-				<Route path="/Arretech" element={<Home />} />
-				<Route path="/Arretech/Servicos" element={<Servicos />} />
-			</Routes>
+			<NavBar />
+			<AppRoutes />
+			<Footer />
 		</>
 	)
 }

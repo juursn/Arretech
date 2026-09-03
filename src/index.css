@@ -4,6 +4,10 @@
 	font-family: "Montserrat", sans-serif;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body,
 html,
 #root {
@@ -30,6 +34,15 @@ html,
 	fill: var(--icon-gradient);
 }
 
+/* Imagem do Header de Serviços */
+.services-header {
+	--services-header: url("./assets/Servicos/header-servicos-claro.png");
+}
+
+.dark .services-header {
+	--services-header: url("./assets/Servicos/header-servicos-escuro.png");
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -47,6 +60,15 @@ html,
 	/*BadgesBlue*/
 	--color-light-badge: #dfe8f3;
 	--color-dark-badge: #2a2a2a;
+	--background-image-darkTag: linear-gradient(
+		to right,
+		rgba(47, 145, 225, 0.4) 0%,
+		rgba(2, 86, 174, 0.4) 100%
+	);
+
+	/* CardBlack Admin */
+	--color-card-black: #191919;
+
 	/*iconBadge*/
 	--color-L-icon-badge: rgba(127, 127, 127, 0.6);
 	--color-D-icon-badge: rgba(127, 127, 127, 1);
@@ -54,6 +76,13 @@ html,
 	/*TextGray*/
 	--color-text-gray: #595959;
 
+	/*Primary Gradient para BG*/
+	--background-image-gradient-blueBG: linear-gradient(
+		to right,
+		#4fb6ff 0%,
+		#2f91ff 50%,
+		#2f91ff 100%
+	);
 	/*Primary Gradient*/
 	--gradient-blue: linear-gradient(
 		to right,

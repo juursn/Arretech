@@ -1,15 +1,13 @@
-import { servicos } from "../Servicos/servicos"
-import { NavBar } from "../../components/NavBar/NavBar"
+import { servicos } from "../../data/servicos"
 import { HeroServicos } from "./components/Header/HeroServicos"
 import { ServicoCard } from "./components/Servico/ServicoCard"
+import { motion } from "motion/react"
 
 export function Servicos() {
 	return (
-		// <div className="flex flex-col w-full min-h-screen bg-light dark:bg-dark ">
-		<section className="flex flex-col bg-light dark:bg-dark">
-			<NavBar />
+		<section className="flex flex-col pb-10 bg-light dark:bg-dark">
 			<HeroServicos />
-			<section className="px-8 py-4 md:px-20 bg-light-glass dark:bg-dark-glass text-text-gray dark:text-white">
+			<section className="px-8 py-4 sm:px-20 bg-light-glass dark:bg-dark-glass text-text-gray dark:text-white">
 				<h2 className="pb-4 text-3xl font-bold text-gradient-blue dark:text-gradient-babyBlue">
 					Sumário
 				</h2>
@@ -28,9 +26,12 @@ export function Servicos() {
 					className="flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
 					id={servico.id}
 				>
-					<div
-						className="w-full p-4 space-y-4 border md:max-w-10/12 border-primary-blue rounded-2xl "
-						data-aos="fade-right"
+					<motion.div
+						className="w-full p-4 space-y-4 border sm:max-w-10/12 border-primary-blue rounded-2xl"
+						initial={{ opacity: 0.2, scale: 0.95 }}
+						whileInView={{ opacity: 1, scale: 1 }}
+						viewport={{ once: false, amount: 0.3 }}
+						transition={{ duration: 0.35 }}
 					>
 						<ServicoCard
 							key={servico.label}
@@ -40,7 +41,7 @@ export function Servicos() {
 							deliveries={servico.deliveries}
 							technologies={servico.technologies}
 						/>
-					</div>
+					</motion.div>
 				</section>
 			))}
 		</section>

@@ -58,7 +58,7 @@ export const Home = () => {
 								O que oferecemos ?
 							</h1>
 						</div>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] md:grid grid-cols-2 min-w-[658px]  lg:grid-cols-4 min-w-full">
+						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-4 min-w-full">
 							<Cards
 								imagem={inteligencia}
 								subtitulo="Inteligência Artificial"
@@ -116,7 +116,7 @@ export const Home = () => {
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Conheça Nossos Serviços
 						</h1>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] md:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
 							<Cards2
 								imagem={chatbot}
 								subtitulo="Chatbots Inteligentes"
@@ -159,7 +159,7 @@ export const Home = () => {
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							O que Nossos Clientes Dizem
 						</h1>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] md:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
 							<Cards3
 								texto="A ArreTech revolucionou nossos processos com Sistemas Inteligentes. Com tecnologia nossos processos aumentaram nossa eficiência em 40% e melhorou significativamente a experiência dos associados."
 								logo={coment}
@@ -201,7 +201,7 @@ export const Home = () => {
 						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Notícias Recentes
 						</h1>
-						<div className="flex flex-col gap-5 mt-5 max-w-[400px] md:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="flex flex-col gap-5 mt-5 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
 							<Cards4
 								imagem={img3}
 								data="16 de junho, 2025"
@@ -234,7 +234,6 @@ export const Home = () => {
 					</div>
 				</div>
 			</aside>
-			<Footer />
 		</body>
 	)
 }

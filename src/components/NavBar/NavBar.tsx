@@ -11,8 +11,10 @@ import {
 import { useTheme } from "../../hooks/useTheme"
 
 export const NavBar = () => {
+	function ScrollTop() {
+		window.scrollTo({ top: 0, behavior: "smooth" })
+	}
 	const [isOpen, setIsOpen] = useState(false)
-
 	// Chamando o hook corretamente no topo do componente
 	const { isDark, toggleTheme } = useTheme()
 
@@ -21,7 +23,7 @@ export const NavBar = () => {
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<div>
-					<NavLink to="/">
+					<NavLink to="/Arretech">
 						<img
 							src={isDark ? logoBranca : logoAzul}
 							alt="Logo"
@@ -32,30 +34,42 @@ export const NavBar = () => {
 
 				{/* Links Desktop */}
 				<nav className="items-center hidden gap-10 font-medium sm:flex">
-					<NavLink to="/" className="transition-colors hover:text-sky-500">
-						Sobre nós
+					<NavLink
+						to="/Arretech/Noticias"
+						onClick={ScrollTop}
+						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+					>
+						Notícias
 					</NavLink>
-					<NavLink to="/" className="transition-colors hover:text-sky-500">
+
+					<a
+						href="#contato"
+						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+					>
 						Contato
-					</NavLink>
-					<NavLink to="/" className="transition-colors hover:text-sky-500">
+					</a>
+
+					<NavLink
+						to="/Arretech/Servicos"
+						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+						onClick={ScrollTop}
+					>
 						Serviços
 					</NavLink>
 				</nav>
 
-				{/* Ações da Direita (Tema + Botão CTA + Menu Hamburguer) */}
 				<div className="flex items-center gap-4">
 					{/* Botão de Troca de Tema */}
 					<button
 						onClick={toggleTheme}
 						aria-label="Alternar tema"
-						className="p-2 text-lg transition-opacity cursor-pointer"
+						className="p-1 text-lg cursor-pointer hover:text-primary-blue  rounded-md transition-all duration-300 ease-linear"
 					>
 						<FontAwesomeIcon icon={isDark ? faSun : faMoon} />
 					</button>
 
 					{/* Botão Entre em Contato (Visível apenas no desktop) */}
-					<button className="hidden sm:flex items-center px-5 py-2.5 rounded-xl bg-sky-500 text-white dark:bg-white dark:text-slate-900 font-medium hover:opacity-90 transition-opacity">
+					<button className="hidden sm:flex items-center px-5 py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white font-medium bg-linear-to-r from-primary-blue via-sky-500 to-primary-blue bg-size-[200%_100%] bg-left hover:bg-right hover:ring-white hover:ring-2 transition-all duration-500 ease-in-out">
 						Entre em contato
 					</button>
 
@@ -74,23 +88,32 @@ export const NavBar = () => {
 			{isOpen && (
 				<div className="flex flex-col items-center gap-5 py-4 sm:hidden ">
 					<NavLink
-						to="/"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
+						to="/Arretech/Noticias"
+						onClick={() => {
+							setIsOpen(false)
+							ScrollTop()
+						}}
+						className="hover:text-sky-500
+						dark:hover:text-gradient-babyBlue
+						transition-colors ease-linear duration-200"
 					>
-						Sobre nós
+						Notícias
 					</NavLink>
-					<NavLink
-						to="/"
+					<a
+						href="#contato"
 						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
+						className="hover:text-sky-500
+						dark:hover:text-gradient-babyBlue
+						transition-colors ease-linear duration-200"
 					>
 						Contato
-					</NavLink>
+					</a>
+
 					<NavLink
-						to="/"
+						to="/Arretech/Servicos"
 						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
+						className="hover:text-sky-500
+						dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
 					>
 						Serviços
 					</NavLink>

@@ -2,10 +2,29 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import {
 	faRobot,
 	faEye,
-	faBolt,
+	faChartDiagram,
+	faFileLines,
+	faShield,
+	faChartLine,
 	// outros ícones
 } from "@fortawesome/free-solid-svg-icons"
-import { faOpenai, faPython, faMeta } from "@fortawesome/free-brands-svg-icons"
+import type { ComponentType, ReactNode } from "react"
+
+import { FaPython } from "react-icons/fa"
+import { AiOutlineOpenAI } from "react-icons/ai"
+import { FaMeta } from "react-icons/fa6"
+import {
+	SiFastapi,
+	SiOpencv,
+	SiYolo,
+	SiTensorflow,
+	SiPytorch,
+	SiScikitlearn,
+	SiGoogleanalytics,
+	SiSpacy,
+} from "react-icons/si"
+import { IoLogoTableau, IoCode } from "react-icons/io5"
+import { TbSql } from "react-icons/tb"
 
 interface IService {
 	id: string
@@ -14,7 +33,7 @@ interface IService {
 	text: string
 	deliveries: string[]
 	technologies: {
-		icon: IconDefinition
+		icon: ReactNode | ComponentType<{ className?: string }>
 		label: string
 	}[]
 }
@@ -31,26 +50,26 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: AiOutlineOpenAI,
 				label: "Openai",
 			},
 			{
-				icon: faPython,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faMeta,
+				icon: FaMeta,
 				label: "LLaMA",
 			},
 			{
-				icon: faBolt,
+				icon: SiFastapi,
 				label: "FastAPI",
 			},
 		],
 	},
 	{
 		id: "visao-computacional",
-		icon: faRobot,
+		icon: faEye,
 		label: "Visão Computacional",
 		text: "Desenvolvemos sistemas capazes de interpretar imagens e vídeos para automatizar processos, identificar padrões e aumentar a eficiência operacional.",
 		deliveries: [
@@ -60,26 +79,26 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faPython,
+				icon: SiOpencv,
 				label: "OpenCV",
 			},
 			{
-				icon: faMeta,
+				icon: SiYolo,
 				label: "YOLO",
 			},
 			{
-				icon: faBolt,
+				icon: SiTensorflow,
 				label: "TensorFlow",
 			},
 		],
 	},
 	{
 		id: "analise-preditiva",
-		icon: faRobot,
+		icon: faChartDiagram,
 		label: "Análise Preditiva",
 		text: "Desenvolvemos modelos de machine learning capazes de analisar dados históricos, prever tendências e apoiar decisões estratégicas com maior precisão.",
 		deliveries: [
@@ -89,26 +108,26 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faPython,
+				icon: SiScikitlearn,
 				label: "ScikitLearn",
 			},
 			{
-				icon: faMeta,
+				icon: SiPytorch,
 				label: "PyTorch",
 			},
 			{
-				icon: faBolt,
+				icon: SiTensorflow,
 				label: "TensorFlow",
 			},
 		],
 	},
 	{
 		id: "business-intelligence",
-		icon: faRobot,
+		icon: faChartLine,
 		label: "Business Intelligence",
 		text: "Transformamos dados complexos em dashboards interativos e insights automatizados que facilitam o acompanhamento de indicadores e a tomada de decisões.",
 		deliveries: [
@@ -118,26 +137,26 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faPython,
+				icon: TbSql,
 				label: "SQL",
 			},
 			{
-				icon: faMeta,
+				icon: IoLogoTableau,
 				label: "Tableau",
 			},
 			{
-				icon: faBolt,
+				icon: SiGoogleanalytics,
 				label: "Data Analytics",
 			},
 		],
 	},
 	{
 		id: "processamento-de-texto",
-		icon: faRobot,
+		icon: faFileLines,
 		label: "Processamento de Texto",
 		text: "Aplicamos inteligência artificial para compreender, classificar e transformar grandes volumes de texto em informações relevantes para o negócio.",
 		deliveries: [
@@ -147,26 +166,26 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faPython,
+				icon: IoCode,
 				label: "NLP",
 			},
 			{
-				icon: faMeta,
+				icon: AiOutlineOpenAI,
 				label: "OpenAI",
 			},
 			{
-				icon: faBolt,
+				icon: SiSpacy,
 				label: "SpaCy",
 			},
 		],
 	},
 	{
 		id: "seguranca-por-ia",
-		icon: faRobot,
+		icon: faShield,
 		label: "Segurança por IA",
 		text: "Utilizamos inteligência artificial para identificar comportamentos suspeitos, detectar anomalias e auxiliar na prevenção de fraudes em diferentes operações.",
 		deliveries: [
@@ -176,19 +195,19 @@ export const servicos: IService[] = [
 		],
 		technologies: [
 			{
-				icon: faOpenai,
+				icon: FaPython,
 				label: "Python",
 			},
 			{
-				icon: faPython,
+				icon: SiScikitlearn,
 				label: "Scikit-learn",
 			},
 			{
-				icon: faMeta,
+				icon: SiTensorflow,
 				label: "TensorFlow",
 			},
 			{
-				icon: faBolt,
+				icon: SiGoogleanalytics,
 				label: "Data Analytics",
 			},
 		],

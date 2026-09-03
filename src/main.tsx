@@ -1,4 +1,3 @@
-import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 // Configurações da lib font-awesome
 import { config } from "@fortawesome/fontawesome-svg-core"

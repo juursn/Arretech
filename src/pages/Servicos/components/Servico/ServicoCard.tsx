@@ -2,9 +2,10 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { LiServicos } from "./LiServicos"
 import { BadgeServico } from "./Badges"
+import type { ComponentType, ReactNode } from "react"
 
 interface ITechnology {
-	icon: IconDefinition
+	icon: ReactNode | ComponentType<{ className?: string }>
 	label: string
 }
 
@@ -25,11 +26,11 @@ export function ServicoCard({
 }: ServiceCardProps) {
 	return (
 		<>
-			<div className="flex gap-x-4">
-				<span className="inline-flex items-center justify-center w-auto p-3 text-3xl bg-light-badge rounded-xl dark:bg-dark-badge">
+			<div className="flex items-center gap-x-4">
+				<span className="inline-flex items-center justify-center w-auto p-3 text-2xl bg-light-badge rounded-xl dark:bg-dark-badge">
 					<FontAwesomeIcon icon={icon} className="icon-gradient" />
 				</span>
-				<h2 className="text-xl font-extrabold text-gradient-blue dark:text-gradient-babyBlue">
+				<h2 className="text-lg font-extrabold sm:text-2xl text-gradient-blue dark:text-gradient-babyBlue">
 					{label}
 				</h2>
 			</div>
@@ -38,7 +39,7 @@ export function ServicoCard({
 			</p>
 			<div className="grid items-start grid-cols-1 gap-4 lg:grid-cols-2 ">
 				<div>
-					<h2 className="pb-2.5 font-bold text-md text-primary-blue dark:text-white">
+					<h2 className="pb-2.5 font-bold text-sm text-primary-blue dark:text-white">
 						O que entregamos
 					</h2>
 					{deliveries.map(delivery => (
@@ -49,7 +50,7 @@ export function ServicoCard({
 					<h2 className="pb-2.5 font-bold text-primary-blue dark:text-white">
 						Tecnologias
 					</h2>
-					<div className="grid grid-cols-2 gap-2 md:w-fit">
+					<div className="grid grid-cols-2 gap-2 sm:w-fit">
 						{technologies.map(technology => (
 							<BadgeServico
 								key={technology.label}
