@@ -6,7 +6,7 @@ interface CardsProps {
 
 export const Cards = ({ imagem, subtitulo, texto }: CardsProps) => {
     return (
-        <div className="flex justify-center items-center text-center flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300">
+        <div className="flex justify-center items-center shrink-0 text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
             <img src={imagem} alt="" className="w-[50px]" />
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF]
                             via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
@@ -26,7 +26,7 @@ interface CardsProps2 {
 export const Cards2 = ({ imagem, subtitulo, texto, botao }: CardsProps2) => {
     return (
         <div className="flex justify-center items-center text-center flex-1 flex-col gap-4 py-6 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300">
-            <img src={imagem} alt="" className="w-[50px]"/>
+            <img src={imagem} alt="" className="w-[50px]" />
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
             <p className="w-[85%] text-xl font-light">{texto}</p>
             <button className="py-1 px-4 text-white bg-[#2F91FF] rounded-lg hover:bg-[#1e70d2] cursor-pointer">{botao}</button>
@@ -43,10 +43,10 @@ interface CardsProps3 {
 
 import { aspas } from "../../assets"
 
-export const Cards3 = ({ texto, logo, subtitulo, cargo  }: CardsProps3) => {
+export const Cards3 = ({ texto, logo, subtitulo, cargo }: CardsProps3) => {
     return (
         <div className="flex justify-center flex-1 flex-col gap-10 py-20 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300">
-            <img src={aspas} alt="" className="w-[50px]"/>
+            <img src={aspas} alt="" className="w-[50px]" />
             <div className="w-full flex flex-col items-center gap-10">
                 <p className="w-[90%] text-lg font-light">{texto}</p>
                 <div className="flex w-full gap-10">
@@ -62,13 +62,13 @@ export const Cards3 = ({ texto, logo, subtitulo, cargo  }: CardsProps3) => {
 }
 
 interface CardsProps4 {
-    imagem: string 
+    imagem: string
     data: string
     tipo: string
     texto: string
 }
 
-export const Cards4 = ({ imagem, data, tipo, texto  }: CardsProps4) => {
+export const Cards4 = ({ imagem, data, tipo, texto }: CardsProps4) => {
     return (
         <div className="flex justify-center flex-1 flex-col gap-5 pb-5 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
             <img src={imagem} alt="" className="w-full rounded-t-xl" />

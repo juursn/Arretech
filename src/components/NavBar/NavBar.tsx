@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState} from "react"
 import { logoAzul, logoBranca } from "../../assets"
 import { NavLink } from "react-router"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -21,7 +21,7 @@ export const NavBar = () => {
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<div>
-					<NavLink to="/">
+					<NavLink to="/Arretech">
 						<img
 							src={isDark ? logoBranca : logoAzul}
 							alt="Logo"
@@ -31,14 +31,14 @@ export const NavBar = () => {
 				</div>
 
 				{/* Links Desktop */}
-				<nav className="items-center hidden gap-10 font-medium sm:flex">
+				< nav className="items-center hidden gap-10 font-medium sm:flex">
 					<NavLink to="/" className="transition-colors hover:text-sky-500">
 						Sobre nós
 					</NavLink>
 					<NavLink to="/" className="transition-colors hover:text-sky-500">
 						Contato
 					</NavLink>
-					<NavLink to="/" className="transition-colors hover:text-sky-500">
+					<NavLink to="/Arretech/Servicos/" className="transition-colors hover:text-sky-500">
 						Serviços
 					</NavLink>
 				</nav>
@@ -71,34 +71,36 @@ export const NavBar = () => {
 			</div>
 
 			{/* Menu Dropdown Mobile */}
-			{isOpen && (
-				<div className="flex flex-col items-center gap-5 py-4 sm:hidden ">
-					<NavLink
-						to="/"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
-					>
-						Sobre nós
-					</NavLink>
-					<NavLink
-						to="/"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
-					>
-						Contato
-					</NavLink>
-					<NavLink
-						to="/"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500"
-					>
-						Serviços
-					</NavLink>
-					<button className="w-full py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white dark:text-slate-900 font-medium">
-						Entre em contato
-					</button>
-				</div>
-			)}
-		</header>
+			{
+				isOpen && (
+					<div className="flex flex-col items-center gap-5 py-4 sm:hidden ">
+						<NavLink
+							to="/"
+							onClick={() => setIsOpen(false)}
+							className="hover:text-sky-500"
+						>
+							Sobre nós
+						</NavLink>
+						<NavLink
+							to="/"
+							onClick={() => setIsOpen(false)}
+							className="hover:text-sky-500"
+						>
+							Contato
+						</NavLink>
+						<NavLink
+							to="/"
+							onClick={() => setIsOpen(false)}
+							className="hover:text-sky-500"
+						>
+							Serviços
+						</NavLink>
+						<button className="w-full py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white dark:text-slate-900 font-medium">
+							Entre em contato
+						</button>
+					</div>
+				)
+			}
+		</header >
 	)
 }
