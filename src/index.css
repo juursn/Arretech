@@ -66,8 +66,15 @@ html,
 		rgba(2, 86, 174, 0.4) 100%
 	);
 
-	/* CardBlack Admin */
+	/* Cards Admin */
 	--color-card-black: #191919;
+	--color-card-offWhite: #f2f2f2;
+	/* Input Color Admin */
+	--color-input-dark: #2c2c2c;
+	--color-input-light: rgba(255, 255, 255, 0.8);
+	/* Input Text Admin */
+	--color-input-tx-D: rgba(255, 255, 255, 0.8);
+	--color-input-tx-L: #595959;
 
 	/*iconBadge*/
 	--color-L-icon-badge: rgba(127, 127, 127, 0.6);

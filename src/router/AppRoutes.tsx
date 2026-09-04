@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router"
 import { Servicos } from "../pages/Servicos"
 import { Blog } from "../pages/Blog"
 import { Home } from "../pages/Home"
-import { AdminPage } from "../pages/Admin"
+import { AdminPage } from "../pages/Admin/index"
 
 export function AppRoutes() {
 	return (

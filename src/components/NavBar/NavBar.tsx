@@ -70,9 +70,13 @@ export const NavBar = () => {
 					</button>
 
 					{/* Botão Entre em Contato (Visível apenas no desktop) */}
-					<button className="hidden sm:flex items-center px-5 py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white font-medium bg-linear-to-r from-primary-blue via-sky-500 to-primary-blue bg-size-[200%_100%] bg-left hover:bg-right hover:ring-white hover:ring-2 transition-all duration-500 ease-in-out">
+					<a
+						className="hidden sm:flex items-center px-5 py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white font-medium bg-linear-to-r from-primary-blue via-sky-500 to-primary-blue bg-size-[200%_100%] bg-left hover:bg-right hover:ring-white hover:ring-2 transition-all duration-500 ease-in-out"
+						href="https://ig.me/m/testearretech?ref=site"
+						target="_blank"
+					>
 						Entre em contato
-					</button>
+					</a>
 
 					{/* Botão Hamburguer Mobile */}
 					<button
