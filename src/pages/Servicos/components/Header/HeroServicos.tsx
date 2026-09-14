@@ -4,7 +4,7 @@ import backgroundDark from "../../../../assets/Servicos/header-servicos-escuro.p
 export function HeroServicos() {
 	return (
 		<div
-			className={`w-full bg-center bg-cover py-14 sm:py-24`}
+			className={`w-full bg-center bg-cover py-8 sm:py-16 lg:py-18`}
 			style={{
 				backgroundImage: `
                     linear-gradient(
@@ -20,11 +20,11 @@ export function HeroServicos() {
                 `,
 			}}
 		>
-			<div className="flex flex-col items-start justify-center h-full px-8 mt-14 gap-y-6">
+			<div className="flex flex-col items-start justify-center h-full px-8 gap-y-6">
 				<h1 className="text-4xl font-extrabold text-gradient-blue">
 					Nossos Serviços
 				</h1>
-				<p className="w-11/12 font-normal text-white sm:max-w-9/12">
+				<p className="w-11/12 font-normal text-white max-w-2xl">
 					Soluções inteligentes sob medida para o seu negócio. Unimos tecnologia
 					de ponta, automação e desenvolvimento ágil para transformar desafios
 					em eficiência e colocar a sua empresa no próximo nível.

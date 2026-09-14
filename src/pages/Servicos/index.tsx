@@ -1,3 +1,5 @@
+import { Footer } from "../../components/Footer/Footer"
+import { NavBar } from "../../components/NavBar/NavBar"
 import { servicos } from "../../data/servicos"
 import { HeroServicos } from "./components/Header/HeroServicos"
 import { ServicoCard } from "./components/Servico/ServicoCard"
@@ -5,7 +7,8 @@ import { motion } from "motion/react"
 
 export function Servicos() {
 	return (
-		<section className="flex flex-col pb-10 bg-light dark:bg-dark">
+		<section className="flex flex-col bg-light dark:bg-dark min-h-screen">
+			<NavBar />
 			<HeroServicos />
 			<section className="px-8 py-4 sm:px-20 bg-light-glass dark:bg-dark-glass text-text-gray dark:text-white">
 				<h2 className="pb-4 text-3xl font-bold text-gradient-blue dark:text-gradient-babyBlue">
@@ -44,6 +47,7 @@ export function Servicos() {
 					</motion.div>
 				</section>
 			))}
+			<Footer />
 		</section>
 	)
 }

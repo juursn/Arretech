@@ -1,6 +1,8 @@
+import type { tagNotice } from "../../../types/notice"
+
 interface FilterItem {
 	id: string
-	label: string
+	label: tagNotice
 }
 
 interface FilterBlogProps {
@@ -10,8 +12,8 @@ interface FilterBlogProps {
 
 export function FilterBlog({ filtroAtivo, setFiltroAtivo }: FilterBlogProps) {
 	const categorias: FilterItem[] = [
-		{ id: "todos", label: "Ver todos" },
-		{ id: "atualizacoes", label: "Atualizações" },
+		{ id: "todos", label: "Ver Todos" },
+		{ id: "atualizações", label: "Atualizações" },
 		{ id: "bastidores", label: "Bastidores" },
 		{ id: "projetos", label: "Projetos" },
 		{ id: "noticias", label: "Notícias" },

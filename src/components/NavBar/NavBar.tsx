@@ -19,7 +19,7 @@ export const NavBar = () => {
 	const { isDark, toggleTheme } = useTheme()
 
 	return (
-		<header className="fixed z-50 flex flex-col justify-center w-full px-4 py-2 text-sm h-fit bg-light-glass dark:bg-dark-glass backdrop-blur-sm text-primary-blue dark:text-white">
+		<header className="sticky top-0 z-50 flex flex-col justify-center w-full px-4 py-2 text-sm h-fit bg-light-glass dark:bg-dark-glass backdrop-blur-sm text-primary-blue dark:text-white">
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<div>

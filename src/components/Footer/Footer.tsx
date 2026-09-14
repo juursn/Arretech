@@ -8,7 +8,7 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 
 export const Footer = () => {
 	return (
-		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5">
+		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5 mt-6">
 			<div className="flex flex-col justify-between gap-10 lg:flex-row">
 				<div className="flex flex-col gap-4">
 					<img src={titulo} alt="" className="w-15" />
