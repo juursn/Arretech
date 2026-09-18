@@ -11,7 +11,14 @@ export const Header = () => {
 			</div>
 			<div className="hidden gap-15 sm:flex">
 				<NavLink to="/Noticias">Notícias</NavLink>
-				<a href="#contato">Contatos</a>
+				<a
+					onClick={() => {
+						const element = document.getElementById("contato")
+						element?.scrollIntoView({ behavior: "smooth" })
+					}}
+				>
+					Contato
+				</a>
 				<NavLink to="/Servicos">Serviços</NavLink>
 			</div>
 			<div>
@@ -21,7 +28,14 @@ export const Header = () => {
 			</div>
 			<div className="hidden">
 				<NavLink to="/Noticias">Notícias</NavLink>
-				<a href="#contato">Contatos</a>
+				<a
+					onClick={() => {
+						const element = document.getElementById("contato")
+						element?.scrollIntoView({ behavior: "smooth" })
+					}}
+				>
+					Contato
+				</a>
 				<NavLink to="/Servicos">Serviços</NavLink>
 				<button>Entre em contato</button>
 			</div>

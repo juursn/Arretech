@@ -42,8 +42,11 @@ export const NavBar = () => {
 					</NavLink>
 
 					<a
-						href="#contato"
 						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+						onClick={() => {
+							const element = document.getElementById("contato")
+							element?.scrollIntoView({ behavior: "smooth" })
+						}}
 					>
 						Contato
 					</a>

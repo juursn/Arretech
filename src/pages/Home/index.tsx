@@ -22,6 +22,7 @@ import { Hero } from "../../components/Hero/Hero"
 import { NavBar } from "../../components/NavBar/NavBar"
 import { useState, useEffect, useRef } from "react"
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react"
+import { Footer } from "../../components/Footer/Footer"
 
 export const Home = () => {
 	const [showElement, setShowElement] = useState(false)
@@ -289,6 +290,7 @@ export const Home = () => {
 					</div>
 				</div>
 			</aside>
+			<Footer />
 		</body>
 	)
 }
