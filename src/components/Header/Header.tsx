@@ -9,9 +9,9 @@ export const Header = () => {
 					<img src={logoAzul} alt="logo azul hidden" />
 				</NavLink>
 			</div>
-			<div className="flex hidden gap-15 sm:flex">
-				<NavLink to="/">Sobre nós</NavLink>
-				<NavLink to="/">Contatos</NavLink>
+			<div className="hidden gap-15 sm:flex">
+				<NavLink to="/Arretech/Noticias">Notícias</NavLink>
+				<NavLink to="/Arretech/#contato">Contatos</NavLink>
 				<NavLink to="/Arretech/Servicos">Serviços</NavLink>
 			</div>
 			<div>
@@ -20,9 +20,9 @@ export const Header = () => {
 				</button>
 			</div>
 			<div className="hidden">
-				<NavLink to="/">Sobre nós</NavLink>
-				<NavLink to="/">Contatos</NavLink>
-				<NavLink to="/">Serviços</NavLink>
+				<NavLink to="/Arretech/Noticias">Notícias</NavLink>
+				<NavLink to="/Arretech/#contato">Contatos</NavLink>
+				<NavLink to="/Arretech/Servicos">Serviços</NavLink>
 				<button>Entre em contato</button>
 			</div>
 		</div>
