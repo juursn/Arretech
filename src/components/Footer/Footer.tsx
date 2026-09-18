@@ -25,7 +25,7 @@ export const Footer = () => {
 						{services.map(service => (
 							<NavLink
 								key={service.label}
-								to="/Arretech/Servicos"
+								to={`/Servicos#${service.id}`}
 								className="font-medium transition-opacity hover:underline hover:opacity-80 whitespace-nowrap"
 							>
 								{service.label}

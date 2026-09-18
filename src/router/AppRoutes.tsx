@@ -19,10 +19,12 @@ export function AppRoutes() {
 	return (
 		<Suspense fallback={<LoadingScreen />}>
 			<Routes>
-				<Route path="/Arretech" element={<Home />} />
-				<Route path="/Arretech/Noticias" element={<Blog />} />
-				<Route path="/Arretech/Servicos" element={<Services />} />
-				<Route path="/Arretech/Admin" element={<Admin />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/Noticias" element={<Blog />} />
+				<Route path="/Servicos" element={<Services />} />
+				<Route path="/Admin" element={<Admin />} />
+				{/* Fallback para evitar erro caso digitem uma rota inexistente */}
+				<Route path="*" element={<Home />} />
 			</Routes>
 		</Suspense>
 	)
