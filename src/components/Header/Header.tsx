@@ -1,5 +1,5 @@
 import { logoAzul } from "../../assets"
-import { NavLink } from "react-router"
+import { NavLink } from "react-router-dom"
 
 export const Header = () => {
 	return (
@@ -28,5 +28,3 @@ export const Header = () => {
 		</div>
 	)
 }
-
-

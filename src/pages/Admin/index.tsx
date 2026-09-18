@@ -4,7 +4,7 @@ import { Badge } from "./Components/ui/Badge"
 import { CreateComents } from "./Components/Sections/Comments/CreateComents"
 import { CreateNotices } from "./Components/Sections/Notices/CreateNotices"
 
-export function AdminPage() {
+export function Admin() {
 	return (
 		<div className="flex flex-col min-h-screen lg:flex-row bg-light dark:bg-dark">
 			{/* Sidebar / Menu Lateral */}

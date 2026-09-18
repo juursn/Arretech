@@ -1,6 +1,6 @@
 import { titulo } from "../../assets"
 import { services } from "../../data/services"
-import { NavLink } from "react-router"
+import { NavLink } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons"
