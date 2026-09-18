@@ -15,8 +15,7 @@ export const NavBar = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" })
 	}
 	const [isOpen, setIsOpen] = useState(false)
-	// Chamando o hook corretamente no topo do componente
-	const { isDark, toggleTheme } = useTheme()
+	const { theme, toggleTheme } = useTheme()
 
 	return (
 		<header className="sticky top-0 z-50 flex flex-col justify-center w-full px-4 py-2 text-sm h-fit bg-light-glass dark:bg-dark-glass backdrop-blur-sm text-primary-blue dark:text-white">
@@ -25,8 +24,8 @@ export const NavBar = () => {
 				<div>
 					<NavLink to="/Arretech">
 						<img
-							src={isDark ? logoBranca : logoAzul}
-							alt="Logo"
+							src={theme === "dark" ? logoBranca : logoAzul}
+							alt="Logo da Empresa ArreTech"
 							className="w-auto h-8"
 						/>
 					</NavLink>
@@ -66,7 +65,7 @@ export const NavBar = () => {
 						aria-label="Alternar tema"
 						className="p-1 text-lg cursor-pointer hover:text-primary-blue  rounded-md transition-all duration-300 ease-linear"
 					>
-						<FontAwesomeIcon icon={isDark ? faSun : faMoon} />
+						<FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
 					</button>
 
 					{/* Botão Entre em Contato (Visível apenas no desktop) */}

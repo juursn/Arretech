@@ -1,4 +1,4 @@
-export type tagNotice =
+export type NoticeTag =
 	| "Ver Todos"
 	| "Eventos"
 	| "Notícias"
@@ -8,9 +8,9 @@ export type tagNotice =
 
 export interface Notice {
 	id: string
-	titulo: string
-	data: string
-	descricao: string
-	imagemUrl: string
-	tag: tagNotice
+	title: string
+	date: string
+	description: string
+	imageUrl: string
+	tag: NoticeTag
 }

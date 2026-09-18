@@ -1,12 +1,12 @@
 import type { Notice } from "../../../../types/notice"
-import { formatarData } from "./dateFormater"
+import { dateFormater } from "./dateFormater"
 
-interface ModalNoticeProps {
+interface NoticeModalProps {
 	notice: Notice | null
 	onClose: () => void
 }
 
-export function ModalNotice({ notice, onClose }: ModalNoticeProps) {
+export function NoticeModal({ notice, onClose }: NoticeModalProps) {
 	// Se notice for null, o modal não é renderizado
 	if (!notice) return null
 
@@ -33,15 +33,15 @@ export function ModalNotice({ notice, onClose }: ModalNoticeProps) {
 				<div className="relative h-36 w-full shrink-0 overflow-hidden sm:h-64">
 					{/* Header da notícia */}
 					<img
-						src={notice.imagemUrl}
-						alt={notice.titulo}
+						src={notice.imageUrl}
+						alt={notice.title}
 						className="h-full w-full object-cover"
 					/>
 					<div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
 					<div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
 						<span className="text-xs  opacity-90 sm:text-sm">
-							{formatarData(notice.data)}
+							{dateFormater(notice.date)}
 						</span>
 					</div>
 				</div>
@@ -49,11 +49,11 @@ export function ModalNotice({ notice, onClose }: ModalNoticeProps) {
 				{/* Texto da notícia */}
 				<div className="flex-1 overflow-y-auto p-6">
 					<h2 className="mb-4 text-2xl font-bold text-primary-blue sm:text-3xl dark:text-white">
-						{notice.titulo}
+						{notice.title}
 					</h2>
 
 					<div className="prose dark:prose-invert max-w-none text-base leading-relaxed text-text-gray dark:text-white/80">
-						<p className="whitespace-pre-line">{notice.descricao}</p>
+						<p className="whitespace-pre-line">{notice.description}</p>
 					</div>
 				</div>
 			</div>

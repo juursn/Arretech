@@ -1,16 +1,19 @@
-import type { tagNotice } from "../../../types/notice"
+import type { NoticeTag } from "../../../types/notice"
 
 interface FilterItem {
 	id: string
-	label: tagNotice
+	label: NoticeTag
 }
 
-interface FilterBlogProps {
-	filtroAtivo: string
-	setFiltroAtivo: (id: string) => void
+interface NoticeFilterProps {
+	activeFilter: string
+	setActiveFilter: (id: string) => void
 }
 
-export function FilterBlog({ filtroAtivo, setFiltroAtivo }: FilterBlogProps) {
+export function NoticeFilter({
+	activeFilter,
+	setActiveFilter,
+}: NoticeFilterProps) {
 	const categorias: FilterItem[] = [
 		{ id: "todos", label: "Ver Todos" },
 		{ id: "atualizações", label: "Atualizações" },
@@ -23,12 +26,12 @@ export function FilterBlog({ filtroAtivo, setFiltroAtivo }: FilterBlogProps) {
 	return (
 		<div className="flex flex-wrap items-center justify-center gap-6 px-3 py-8">
 			{categorias.map((cat, index) => {
-				const isAtivo = filtroAtivo === cat.id
+				const isAtivo = activeFilter === cat.id
 
 				return (
 					<div key={cat.id} className="flex items-center gap-6">
 						<button
-							onClick={() => setFiltroAtivo(cat.id)}
+							onClick={() => setActiveFilter(cat.id)}
 							className={`transition-all cursor-pointer font-medium ${
 								isAtivo
 									? "text-primary-blue dark:text-white font-semibold underline underline-offset-8"

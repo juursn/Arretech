@@ -1,7 +1,9 @@
-// import backgroundLight from "../../../../assets/Servicos/header-servicos-claro.png"
-import backgroundDark from "../../../../assets/Servicos/header-servicos-escuro.png"
+import backgroundLight from "../../../assets/Servicos/header-servicos-claro.png"
+import backgroundDark from "../../../assets/Servicos/header-servicos-escuro.png"
+import { useTheme } from "../../../hooks/useTheme"
 
-export function HeroServicos() {
+export function ServiceHero() {
+	const { theme } = useTheme()
 	return (
 		<div
 			className={`w-full bg-center bg-cover py-8 sm:py-16 lg:py-18`}
@@ -16,7 +18,7 @@ export function HeroServicos() {
                         rgba(21,21,21,0.75) 75%,
                         rgba(27,27,27,1) 92%
                     ),
-                    url(${backgroundDark})
+                    url(${theme === "dark" ? backgroundDark : backgroundLight})
                 `,
 			}}
 		>

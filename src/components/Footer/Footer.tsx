@@ -1,5 +1,5 @@
 import { titulo } from "../../assets"
-import { servicos } from "../../data/servicos"
+import { services } from "../../data/services"
 import { NavLink } from "react-router"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -22,13 +22,13 @@ export const Footer = () => {
 					{/* Serviços */}
 					<div className="flex flex-col">
 						<h3 className="mb-3 text-xl font-bold">Serviços</h3>
-						{servicos.map(servico => (
+						{services.map(service => (
 							<NavLink
-								key={servico.label}
+								key={service.label}
 								to="/Arretech/Servicos"
 								className="font-medium transition-opacity hover:underline hover:opacity-80 whitespace-nowrap"
 							>
-								{servico.label}
+								{service.label}
 							</NavLink>
 						))}
 					</div>
@@ -37,14 +37,18 @@ export const Footer = () => {
 						<h3 className="mb-3 text-xl font-bold">Contato</h3>
 						<div className="flex flex-col gap-2">
 							<a
-								href="mailto:arre.tech123@gmail.com"
+								href="https://mail.google.com/mail/?view=cm&fs=1&to=arre.tech123@gmail.com"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="flex items-center gap-2 transition-opacity hover:underline hover:opacity-80"
 							>
 								<FontAwesomeIcon icon={faEnvelope} />
 								<span>arre.tech123@gmail.com</span>
 							</a>
 							<a
-								href="tel:+5583991544516"
+								href="https://wa.me/5583991544516"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="flex items-center gap-2 transition-opacity hover:underline hover:opacity-80"
 							>
 								<FontAwesomeIcon icon={faPhone} />

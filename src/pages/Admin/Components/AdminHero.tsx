@@ -1,4 +1,4 @@
-export function HeroAdmin() {
+export function AdminHero() {
 	return (
 		<div className="border-b border-text-gray/20 py-6 mt-14 px-4">
 			<h1 className="text-gradient-blue text-3xl font-extrabold">Dashboard</h1>

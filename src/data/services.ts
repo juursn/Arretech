@@ -25,7 +25,7 @@ import { IoLogoTableau, IoCode } from "react-icons/io5"
 import { TbSql } from "react-icons/tb"
 import type { Service } from "../types/service"
 
-export const servicos: Service[] = [
+export const services: Service[] = [
 	{
 		id: "chatbot-inteligente",
 		icon: faRobot,

@@ -18,7 +18,6 @@ import {
 } from "../../assets"
 import { Cards, Cards2, Cards3, Cards4, Cards5 } from "../../components/cards"
 import { Eventos } from "../../components/eventos"
-import { Footer } from "../../components/Footer/Footer"
 import { Hero } from "../../components/Hero/Hero"
 import { NavBar } from "../../components/NavBar/NavBar"
 import { useState, useEffect, useRef } from "react"

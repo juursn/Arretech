@@ -10,11 +10,11 @@ import {
 import { NavLink } from "react-router"
 import { useState } from "react"
 
-export function NavBarAdmin() {
+export function AdminNavBar() {
 	const linksAdmin = "flex flex-col text-white text-md gap-1"
 	const titleLinks =
 		"border-b border-white/20 py-2 text-[12px] font-extralight uppercase tracking-wide text-white/60 mt-2"
-	const { isDark, toggleTheme } = useTheme()
+	const { theme, toggleTheme } = useTheme()
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
@@ -29,7 +29,7 @@ export function NavBarAdmin() {
 				<div className="flex items-center text-white text-lg space-x-3">
 					{/* Ícone do Tema (Visível em todas as telas) */}
 					<FontAwesomeIcon
-						icon={isDark ? faSun : faMoon}
+						icon={theme === "dark" ? faSun : faMoon}
 						onClick={toggleTheme}
 						className="cursor-pointer"
 					/>
