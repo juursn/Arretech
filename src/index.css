@@ -4,10 +4,6 @@
 	font-family: "Montserrat", sans-serif;
 }
 
-html {
-	scroll-behavior: smooth;
-}
-
 body,
 html,
 #root {
@@ -69,6 +65,10 @@ html,
 	/* Cards Admin */
 	--color-card-black: #191919;
 	--color-card-offWhite: #f2f2f2;
+
+	/* Cards edit e delet */
+	--color-card-gray: #dedede;
+	--color-card-dark: #363636;
 	/* Input Color Admin */
 	--color-input-dark: #2c2c2c;
 	--color-input-light: rgba(255, 255, 255, 0.8);

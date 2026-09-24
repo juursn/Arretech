@@ -1,9 +1,10 @@
 import { Button } from "../../ui/Button"
+import { DateInput } from "../../ui/DateInput"
 import { FileInput } from "../../ui/FileInput"
 import { Input } from "../../ui/Input"
 import { Select } from "../../ui/Select"
 
-export function CreateNotices() {
+export function CreateNotice() {
 	return (
 		<div className="my-6">
 			<h2 className="text-2xl font-bold text-primary-blue dark:text-white">
@@ -25,8 +26,8 @@ export function CreateNotices() {
 					name="descricao-noticia"
 					id="descricao-noticia"
 				/>
-
-				<Select name="tag-noticia" id="tag-noticia" defaultValue="">
+				<DateInput />
+				<Select name="tag-noticia" id="tag-noticia" defaultValue="Todos">
 					<option value="" disabled hidden>
 						Selecione uma categoria
 					</option>
