@@ -6,10 +6,13 @@ config.autoAddCss = false
 
 import "./index.css"
 import { App } from "./App.tsx"
-import { BrowserRouter } from "react-router"
+import { HashRouter } from "react-router-dom"
+import { ThemeProvider } from "./context/ThemeContext.tsx"
 
 createRoot(document.getElementById("root")!).render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>
+	<ThemeProvider>
+		<HashRouter>
+			<App />
+		</HashRouter>
+	</ThemeProvider>
 )

@@ -1,4 +1,3 @@
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import {
 	faRobot,
 	faEye,
@@ -8,7 +7,6 @@ import {
 	faChartLine,
 	// outros ícones
 } from "@fortawesome/free-solid-svg-icons"
-import type { ComponentType, ReactNode } from "react"
 
 import { FaPython } from "react-icons/fa"
 import { AiOutlineOpenAI } from "react-icons/ai"
@@ -25,19 +23,9 @@ import {
 } from "react-icons/si"
 import { IoLogoTableau, IoCode } from "react-icons/io5"
 import { TbSql } from "react-icons/tb"
+import type { Service } from "../types/service"
 
-interface IService {
-	id: string
-	icon: IconDefinition
-	label: string
-	text: string
-	deliveries: string[]
-	technologies: {
-		icon: ReactNode | ComponentType<{ className?: string }>
-		label: string
-	}[]
-}
-export const servicos: IService[] = [
+export const services: Service[] = [
 	{
 		id: "chatbot-inteligente",
 		icon: faRobot,

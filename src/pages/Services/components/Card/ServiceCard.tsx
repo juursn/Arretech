@@ -1,7 +1,7 @@
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { LiServicos } from "./LiServicos"
-import { BadgeServico } from "./Badges"
+import { ServiceList } from "./ServiceList"
+import { ServiceBadges } from "./ServiceBadges"
 import type { ComponentType, ReactNode } from "react"
 
 interface ITechnology {
@@ -17,7 +17,7 @@ interface ServiceCardProps {
 	technologies: ITechnology[]
 }
 
-export function ServicoCard({
+export function ServiceCard({
 	icon,
 	label,
 	text,
@@ -43,7 +43,7 @@ export function ServicoCard({
 						O que entregamos
 					</h2>
 					{deliveries.map(delivery => (
-						<LiServicos key={delivery} label={delivery} />
+						<ServiceList key={delivery} label={delivery} />
 					))}
 				</div>
 				<div>
@@ -52,7 +52,7 @@ export function ServicoCard({
 					</h2>
 					<div className="grid grid-cols-2 gap-2 sm:w-fit">
 						{technologies.map(technology => (
-							<BadgeServico
+							<ServiceBadges
 								key={technology.label}
 								icon={technology.icon}
 								label={technology.label}

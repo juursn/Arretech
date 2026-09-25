@@ -1,20 +1,20 @@
-import { NavBarAdmin } from "./Components/NavBarAdmin"
-import { HeroAdmin } from "./Components/HeroAdmin"
-import { Badge } from "./Components/UI/Badge"
-import { CreateComents } from "./Components/AdminSections/Comments/CreateComents"
-import { CreateNotices } from "./Components/AdminSections/Notices/CreateNotices"
+import { AdminNavBar } from "./Components/AdminNavBar"
+import { AdminHero } from "./Components/AdminHero"
+import { Badge } from "./Components/ui/Badge"
+import { CreateComents } from "./Components/Sections/Comments/CreateComents"
+import { CreateNotices } from "./Components/Sections/Notices/CreateNotices"
 
-export function AdminPage() {
+export function Admin() {
 	return (
 		<div className="flex flex-col min-h-screen lg:flex-row bg-light dark:bg-dark">
 			{/* Sidebar / Menu Lateral */}
 			<nav className="w-full shrink-0 lg:w-64">
-				<NavBarAdmin />
+				<AdminNavBar />
 			</nav>
 
 			{/* Conteúdo Principal */}
 			<main className="flex-1 w-full p-4 lg:p-6">
-				<HeroAdmin />
+				<AdminHero />
 
 				{/* Seção de Criação */}
 				<section className="mt-6">

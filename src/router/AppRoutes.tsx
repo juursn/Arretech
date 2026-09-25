@@ -1,16 +1,31 @@
-import { Route, Routes } from "react-router"
-import { Servicos } from "../pages/Servicos"
-import { Blog } from "../pages/Blog"
-import { Home } from "../pages/Home"
-import { AdminPage } from "../pages/Admin/index"
+import { lazy, Suspense } from "react"
+import { Routes, Route } from "react-router-dom"
+import { LoadingScreen } from "./LoadingScreen"
+
+const Home = lazy(() =>
+	import("../pages/Home").then(m => ({ default: m.Home }))
+)
+const Blog = lazy(() =>
+	import("../pages/Blog").then(m => ({ default: m.Blog }))
+)
+const Services = lazy(() =>
+	import("../pages/Services").then(m => ({ default: m.Services }))
+)
+const Admin = lazy(() =>
+	import("../pages/Admin").then(m => ({ default: m.Admin }))
+)
 
 export function AppRoutes() {
 	return (
-		<Routes>
-			<Route path="/Arretech" element={<Home />} />
-			<Route path="/Arretech/Servicos" element={<Servicos />} />
-			<Route path="/Arretech/Noticias" element={<Blog />} />
-			<Route path="/Arretech/Admin" element={<AdminPage />} />
-		</Routes>
+		<Suspense fallback={<LoadingScreen />}>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/Noticias" element={<Blog />} />
+				<Route path="/Servicos" element={<Services />} />
+				<Route path="/Admin" element={<Admin />} />
+				{/* Fallback para evitar erro caso digitem uma rota inexistente */}
+				<Route path="*" element={<Home />} />
+			</Routes>
+		</Suspense>
 	)
 }

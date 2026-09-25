@@ -1,5 +1,5 @@
 import { logoAzul } from "../../assets"
-import { NavLink } from "react-router"
+import { NavLink } from "react-router-dom"
 
 export const Header = () => {
 	return (
@@ -9,24 +9,36 @@ export const Header = () => {
 					<img src={logoAzul} alt="logo azul hidden" />
 				</NavLink>
 			</div>
-			<div className="flex hidden gap-15 sm:flex">
-				<NavLink to="/">Sobre nós</NavLink>
-				<NavLink to="/">Contatos</NavLink>
-				<NavLink to="/Arretech/Servicos">Serviços</NavLink>
+			<div className="hidden gap-15 sm:flex">
+				<NavLink to="/Noticias">Notícias</NavLink>
+				<a
+					onClick={() => {
+						const element = document.getElementById("contato")
+						element?.scrollIntoView({ behavior: "smooth" })
+					}}
+				>
+					Contato
+				</a>
+				<NavLink to="/Servicos">Serviços</NavLink>
 			</div>
 			<div>
-				<button className=" p-1.5 rounded-2xl bg-white text-black ">
+				<button className="p-1.5 rounded-2xl bg-white text-black">
 					Entre em contato
 				</button>
 			</div>
 			<div className="hidden">
-				<NavLink to="/">Sobre nós</NavLink>
-				<NavLink to="/">Contatos</NavLink>
-				<NavLink to="/">Serviços</NavLink>
+				<NavLink to="/Noticias">Notícias</NavLink>
+				<a
+					onClick={() => {
+						const element = document.getElementById("contato")
+						element?.scrollIntoView({ behavior: "smooth" })
+					}}
+				>
+					Contato
+				</a>
+				<NavLink to="/Servicos">Serviços</NavLink>
 				<button>Entre em contato</button>
 			</div>
 		</div>
 	)
 }
-
-

@@ -1,7 +1,7 @@
-import { Button } from "../../UI/Button"
-import { FileInput } from "../../UI/FileInput"
-import { Input } from "../../UI/Input"
-import { Select } from "../../UI/Select"
+import { Button } from "../../ui/Button"
+import { FileInput } from "../../ui/FileInput"
+import { Input } from "../../ui/Input"
+import { Select } from "../../ui/Select"
 
 export function CreateNotices() {
 	return (

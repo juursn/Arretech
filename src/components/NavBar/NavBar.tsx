@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { logoAzul, logoBranca } from "../../assets"
-import { NavLink } from "react-router"
+import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
 	faBars,
@@ -15,28 +15,26 @@ export const NavBar = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" })
 	}
 	const [isOpen, setIsOpen] = useState(false)
-	// Chamando o hook corretamente no topo do componente
-	const { isDark, toggleTheme } = useTheme()
+	const { theme, toggleTheme } = useTheme()
 
 	return (
-		<header className="fixed z-50 flex flex-col justify-center w-full px-4 py-2 text-sm h-fit bg-light-glass dark:bg-dark-glass backdrop-blur-sm text-primary-blue dark:text-white">
+		<header className="sticky top-0 z-50 flex flex-col justify-center w-full px-4 py-2 text-sm h-fit bg-light-glass dark:bg-dark-glass backdrop-blur-sm text-primary-blue dark:text-white">
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<div>
-					<NavLink to="/Arretech">
+					<NavLink to="/" onClick={ScrollTop}>
 						<img
-							src={isDark ? logoBranca : logoAzul}
-							alt="Logo"
+							src={theme === "dark" ? logoBranca : logoAzul}
+							alt="Logo da Empresa ArreTech"
 							className="w-auto h-8"
 						/>
 					</NavLink>
 				</div>
 
 				{/* Links Desktop */}
-
 				<nav className="items-center hidden gap-10 font-medium sm:flex">
 					<NavLink
-						to="/Arretech/Noticias"
+						to="/Noticias"
 						onClick={ScrollTop}
 						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
 					>
@@ -44,14 +42,17 @@ export const NavBar = () => {
 					</NavLink>
 
 					<a
-						href="#contato"
 						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+						onClick={() => {
+							const element = document.getElementById("contato")
+							element?.scrollIntoView({ behavior: "smooth" })
+						}}
 					>
 						Contato
 					</a>
 
 					<NavLink
-						to="/Arretech/Servicos"
+						to="/Servicos"
 						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
 						onClick={ScrollTop}
 					>
@@ -64,16 +65,17 @@ export const NavBar = () => {
 					<button
 						onClick={toggleTheme}
 						aria-label="Alternar tema"
-						className="p-1 text-lg cursor-pointer hover:text-primary-blue  rounded-md transition-all duration-300 ease-linear"
+						className="p-1 text-lg cursor-pointer hover:text-primary-blue rounded-md transition-all duration-300 ease-linear"
 					>
-						<FontAwesomeIcon icon={isDark ? faSun : faMoon} />
+						<FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
 					</button>
 
-					{/* Botão Entre em Contato (Visível apenas no desktop) */}
+					{/* Botão Entre em Contato (Desktop) */}
 					<a
 						className="hidden sm:flex items-center px-5 py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white font-medium bg-linear-to-r from-primary-blue via-sky-500 to-primary-blue bg-size-[200%_100%] bg-left hover:bg-right hover:ring-white hover:ring-2 transition-all duration-500 ease-in-out"
 						href="https://ig.me/m/testearretech?ref=site"
 						target="_blank"
+						rel="noopener noreferrer"
 					>
 						Entre em contato
 					</a>
@@ -90,42 +92,44 @@ export const NavBar = () => {
 			</div>
 
 			{/* Menu Dropdown Mobile */}
-
 			{isOpen && (
-				<div className="flex flex-col items-center gap-5 py-4 sm:hidden ">
+				<div className="flex flex-col items-center gap-5 py-4 sm:hidden">
 					<NavLink
-						to="/Arretech/Noticias"
+						to="/Noticias"
 						onClick={() => {
 							setIsOpen(false)
 							ScrollTop()
 						}}
-						className="hover:text-sky-500
-						dark:hover:text-gradient-babyBlue
-						transition-colors ease-linear duration-200"
+						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
 					>
 						Notícias
 					</NavLink>
 					<a
 						href="#contato"
 						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500
-						dark:hover:text-gradient-babyBlue
-						transition-colors ease-linear duration-200"
+						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
 					>
 						Contato
 					</a>
 
 					<NavLink
-						to="/Arretech/Servicos"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500
-						dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
+						to="/Servicos"
+						onClick={() => {
+							setIsOpen(false)
+							ScrollTop()
+						}}
+						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
 					>
 						Serviços
 					</NavLink>
-					<button className="w-full py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white dark:text-slate-900 font-medium">
+					<a
+						href="https://ig.me/m/testearretech?ref=site"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="w-full text-center py-2.5 rounded-xl bg-primary-blue text-white dark:bg-white dark:text-slate-900 font-medium"
+					>
 						Entre em contato
-					</button>
+					</a>
 				</div>
 			)}
 		</header>

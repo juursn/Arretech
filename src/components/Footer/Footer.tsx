@@ -1,6 +1,6 @@
 import { titulo } from "../../assets"
-import { servicos } from "../../data/servicos"
-import { NavLink } from "react-router"
+import { services } from "../../data/services"
+import { NavLink } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons"
@@ -8,8 +8,13 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 
 export const Footer = () => {
 	return (
+<<<<<<< HEAD
 		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5">
 			<div className="flex flex-col justify-between gap-10 lg:flex-row border-b pb-10">
+=======
+		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5 mt-6">
+			<div className="flex flex-col justify-between gap-10 lg:flex-row">
+>>>>>>> 8d5d8f154c9544634c4a42d498592836b5f5a0a9
 				<div className="flex flex-col gap-4">
 					<img src={titulo} alt="" className="w-15" />
 					<p className="w-11/12 sm:w-1/2 font-light text-sm min-w-[45%]">
@@ -22,13 +27,13 @@ export const Footer = () => {
 					{/* Serviços */}
 					<div className="flex flex-col">
 						<h3 className="mb-3 text-xl font-bold">Serviços</h3>
-						{servicos.map(servico => (
+						{services.map(service => (
 							<NavLink
-								key={servico.label}
-								to="/Arretech/Servicos"
+								key={service.label}
+								to={`/Servicos#${service.id}`}
 								className="font-medium transition-opacity hover:underline hover:opacity-80 whitespace-nowrap"
 							>
-								{servico.label}
+								{service.label}
 							</NavLink>
 						))}
 					</div>
@@ -37,14 +42,18 @@ export const Footer = () => {
 						<h3 className="mb-3 text-xl font-bold">Contato</h3>
 						<div className="flex flex-col gap-2">
 							<a
-								href="mailto:arre.tech123@gmail.com"
+								href="https://mail.google.com/mail/?view=cm&fs=1&to=arre.tech123@gmail.com"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="flex items-center gap-2 transition-opacity hover:underline hover:opacity-80"
 							>
 								<FontAwesomeIcon icon={faEnvelope} />
 								<span>arre.tech123@gmail.com</span>
 							</a>
 							<a
-								href="tel:+5583991544516"
+								href="https://wa.me/5583991544516"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="flex items-center gap-2 transition-opacity hover:underline hover:opacity-80"
 							>
 								<FontAwesomeIcon icon={faPhone} />

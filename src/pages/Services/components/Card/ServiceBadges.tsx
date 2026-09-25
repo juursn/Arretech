@@ -1,14 +1,14 @@
 import type { ComponentType, ReactNode } from "react"
 
-interface badgeServicoProps {
+interface ServiceBadgesProps {
 	icon: ReactNode | ComponentType<{ className?: string }>
 	label: string
 }
 
-export function BadgeServico({
+export function ServiceBadges({
 	icon: IconComponent,
 	label,
-}: badgeServicoProps) {
+}: ServiceBadgesProps) {
 	return (
 		<div className="flex items-center gap-1.5 py-2 w-full sm:w-38 px-2 bg-light-badge dark:bg-dark-badge text-L-icon-badge dark:text-D-icon-badge rounded-xl">
 			<div className="flex items-center justify-center text-xl">
