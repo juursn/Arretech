@@ -1,28 +1,24 @@
 import { Header } from "../../components/Header/Header"
 import {
 	painel,
-	inteligencia,
-	agil,
-	auto,
-	suporte,
 	nvidia,
 	pesquisaai,
-	processamneto,
-	chatbot,
-	visao,
-	analise,
-	business,
-	seguranca,
 	coment,
 	img3,
+	pesquisaaiDark,
+	nvidiaDark,
+	painelDark,
 } from "../../assets"
-import { Cards, Cards2, Cards3, Cards4, Cards5 } from "../../components/cards"
-import { Eventos } from "../../components/eventos"
-import { Hero } from "../../components/Hero/Hero"
+import { Cards, Cards2, Cards3, Cards4, Cards5 } from "./components/cards"
+import { Eventos } from "./components/eventos"
+import { Footer } from "../../components/Footer/Footer"
+import { Hero } from "./components/Hero/Hero"
 import { NavBar } from "../../components/NavBar/NavBar"
 import { useState, useEffect, useRef } from "react"
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react"
-import { Footer } from "../../components/Footer/Footer"
+import { CaretLeftIcon, CaretRightIcon, LightningIcon, NetworkIcon, UsersThreeIcon, RobotIcon, FileTextIcon } from "@phosphor-icons/react"
+import { FaBrain, FaEye, FaChartDiagram, FaShield  } from "react-icons/fa6";
+import { LuChartLine } from "react-icons/lu";
+import { IoChevronDownSharp } from "react-icons/io5";
 
 export const Home = () => {
 	const [showElement, setShowElement] = useState(false)
@@ -39,22 +35,20 @@ export const Home = () => {
 		}
 	}, [])
 
-	const carrosselRef = useRef<HTMLDivElement>(null)
+	const carrosselRef1 = useRef<HTMLDivElement>(null)
+	const carrosselRef2 = useRef<HTMLDivElement>(null)
+	const carrosselRef3 = useRef<HTMLDivElement>(null)
 	const [showLeft, setShowLeft] = useState(false)
 
-	const irParaDireita = () => {
-		carrosselRef.current?.scrollBy({
-			left: 390,
+	const rolar = (
+		ref: React.RefObject<HTMLDivElement | null>,
+		distancia: number
+	) => {
+		ref.current?.scrollBy({
+			left: distancia,
 			behavior: "smooth",
-		})
-	}
-
-	const irParaEsquerda = () => {
-		carrosselRef.current?.scrollBy({
-			left: -390,
-			behavior: "smooth",
-		})
-	}
+		});
+	};
 
 	const verificarScroll = (e: React.UIEvent<HTMLDivElement>) => {
 		const elemento = e.currentTarget
@@ -63,14 +57,19 @@ export const Home = () => {
 	}
 
 	return (
-		<body className="w-full">
+		<body className="w-full dark:bg-[#1f1e27] dark:text-white">
 			{showElement && <NavBar />}
 			<header className=" flex flex-col items-center relative w-full mt-7">
 				<nav className="flex justify-center w-[95%]">
 					<img
 						src={painel}
+						alt="painel" 
+						className="w-full h-[650px] rounded-4xl sm:h-[550px] block dark:hidden"
+					/>
+					<img
+						src={painelDark}
 						alt="painel"
-						className="w-full h-[650px] rounded-4xl sm:h-[550px]"
+						className="w-full h-[650px] rounded-4xl sm:h-[550px] hidden dark:block"
 					/>
 					<Header />
 				</nav>
@@ -100,38 +99,36 @@ export const Home = () => {
 							</h1>
 						</div>
 						<div
-							className="relative flex sm:flex-col gap-5 mt-15 overflow-x-auto scroll-smooth w-full"
-							ref={carrosselRef}
-							onScroll={verificarScroll}
+							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef1} onScroll={verificarScroll}
 						>
 							<Cards
-								imagem={inteligencia}
+								imagem={<FaBrain size={38} className="text-blue-500" />}
 								subtitulo="Inteligência Artificial"
 								texto="Desenvolvemos sistemas de IA personalizados que aprendem e se adaptam às necessidades do seu negócio."
 							/>
 							<Cards
-								imagem={agil}
+								imagem={<LightningIcon size={38} weight="fill" className="text-blue-500" />}
 								subtitulo="Desenvolvimento Ágil"
 								texto="Metodologias modernas de desenvolvimento para entregar soluções robustas e escaláveis rapidamente."
 							/>
 							<Cards
-								imagem={auto}
+								imagem={<NetworkIcon size={38} weight="fill" className="text-blue-500" />}
 								subtitulo="Automação Inteligente"
 								texto="Automatizamos processos complexos usando IA para aumentar eficiência e reduzir custos operacionais."
 							/>
 							<Cards
-								imagem={suporte}
+								imagem={<UsersThreeIcon size={38} weight="fill" className="text-blue-500" />}
 								subtitulo="Suporte Especializado"
 								texto="Equipe dedicada de especialistas em IA para garantir o sucesso dos seus projetos."
 							/>
 						</div>
-						<button className="absolute flex right-10" onClick={irParaDireita}>
+						<button className="absolute flex right-10" onClick={() => rolar(carrosselRef1, 300)}>
 							<CaretRightIcon />
 						</button>
 						{showLeft && (
 							<button
 								className="absolute flex left-10"
-								onClick={irParaEsquerda}
+								onClick={() => rolar(carrosselRef1, -300)}
 							>
 								<CaretLeftIcon />
 							</button>
@@ -150,12 +147,22 @@ export const Home = () => {
 								<img
 									src={pesquisaai}
 									alt=""
-									className="border border-[#235FC7] p-2 px-12 rounded-3xl transition-transform duration-300 hover:scale-110 cursor-default"
+									className="border border-[#235FC7] p-2 px-12 w-[200px]  rounded-3xl transition-transform duration-300 hover:scale-110 cursor-default block dark:hidden"
 								/>
 								<img
 									src={nvidia}
 									alt=""
-									className="border border-[#235FC7] p-2 px-3 rounded-3xl transition-transform duration-300 hover:scale-110 cursor-default"
+									className="border border-[#235FC7] p-2 px-12 w-[200px]  rounded-3xl transition-transform duration-300 hover:scale-110 cursor-default forced-color-adjust-auto text-white block dark:hidden"
+								/>
+								<img
+									src={pesquisaaiDark}
+									alt=""
+									className="border border-[#235FC7] p-2 px-12 w-[200px] rounded-3xl transition-transform duration-300 hover:scale-110 cursor-defaul hidden dark:block dark:justify-center"
+								/>
+								<img
+									src={nvidiaDark}
+									alt=""
+									className="border border-[#235FC7] p-2 px-12 w-[200px] rounded-3xl transition-transform duration-300 hover:scale-110 cursor-default forced-color-adjust-auto text-white hidden dark:block"
 								/>
 							</div>
 						</div>
@@ -168,54 +175,65 @@ export const Home = () => {
 							</div>
 						</div>
 					</div>
-					<div className="flex flex-col items-center">
+					<div className="flex flex-col items-center justify-center">
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Conheça Nossos Serviços
 						</h1>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef2} onScroll={verificarScroll}>
 							<Cards2
-								imagem={chatbot}
+								imagem={<RobotIcon size={38} weight="fill" className="text-blue-500" />}
 								subtitulo="Chatbots Inteligentes"
 								texto="Desenvolvimento de assistentes virtuais com processamento de linguagem natural para atendimento automatizado."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={visao}
+								imagem={<FaEye size={38} className="text-blue-500" />}
 								subtitulo="Visão Computacional"
 								texto="Sistemas de reconhecimento de imagem e análise visual para automação de processos industriais."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={analise}
+								imagem={<FaChartDiagram size={38} className="text-blue-500" />}
 								subtitulo="Análise Preditiva"
 								texto="Modelos de machine learning para previsão de tendências e otimização de decisões estratégicas."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={business}
+								imagem={<LuChartLine size={38} className="text-blue-500" />}
 								subtitulo="Business Intelligence"
 								texto="Dashboards inteligentes com insights automatizados para tomada de decisão baseada em dados."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={processamneto}
+								imagem={<FileTextIcon size={38} weight="fill" className="text-blue-500" />}
 								subtitulo="Processamento de Texto"
 								texto="Análise semântica e processamento de grandes volumes de texto para extração de insights."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={seguranca}
+								imagem={<FaShield size={38} className="text-blue-500" />}
 								subtitulo="Segurança por IA"
 								texto="Sistemas de detecção de anomalias e prevenção de fraudes usando algoritmos avançados."
 								botao="Saiba mais"
 							/>
 						</div>
+						<button className="absolute flex right-10 mt-30" onClick={() => rolar(carrosselRef2, 300)}>
+							<CaretRightIcon />
+						</button>
+						{showLeft && (
+							<button
+								className="absolute flex left-10 mt-30"
+								onClick={() => rolar(carrosselRef2, -300)}
+							>
+								<CaretLeftIcon />
+							</button>
+						)}
 					</div>
-					<div>
+					<div className="flex flex-col justify-center">
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							O que Nossos Clientes Dizem
 						</h1>
-						<div className="flex flex-col gap-5 mt-15 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef3} onScroll={verificarScroll}>
 							<Cards3
 								texto="A ArreTech revolucionou nossos processos com Sistemas Inteligentes. Com tecnologia nossos processos aumentaram nossa eficiência em 40% e melhorou significativamente a experiência dos associados."
 								logo={coment}
@@ -235,6 +253,17 @@ export const Home = () => {
 								cargo="Coordenador, Amerifa -PB"
 							/>
 						</div>
+						<button className="absolute flex right-10 mt-30" onClick={() => rolar(carrosselRef3, 300)}>
+							<CaretRightIcon />
+						</button>
+						{showLeft && (
+							<button
+								className="absolute flex left-10 mt-30"
+								onClick={() => rolar(carrosselRef3, -300)}
+							>
+								<CaretLeftIcon />
+							</button>
+						)}
 					</div>
 					<div className="flex flex-col items-center gap-10">
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
@@ -278,14 +307,23 @@ export const Home = () => {
 							/>
 						</div>
 					</div>
-					<div className="flex flex-col gap-10">
+					<div className="flex flex-col gap-10 mb-10">
 						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							FAQ
 						</h1>
 						<div className="flex flex-col gap-4">
-							<Cards5 texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" />
-							<Cards5 texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" />
-							<Cards5 texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" />
+							<Cards5 
+								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
+								imagem={<IoChevronDownSharp className="text-blue-500" />}
+							/>
+							<Cards5 
+								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" 
+								imagem={<IoChevronDownSharp className="text-blue-500" />}
+							/>
+							<Cards5 
+								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" 
+								imagem={<IoChevronDownSharp className="text-blue-500" />}
+							/>
 						</div>
 					</div>
 				</div>
