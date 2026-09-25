@@ -1,11 +1,11 @@
 import { AdminNavBar } from "./Components/AdminNavBar"
 import { AdminHero } from "./Components/AdminHero"
 import { Badge } from "./Components/ui/Badge"
-import { CreateComment } from "./Components/Sections/Comments/CreateComment"
+import { CreateTestimonial } from "./Components/Sections/Testimonial/CreateTestimonial"
 import { CreateNotice } from "./Components/Sections/Notices/CreateNotice"
-import { EditComment } from "./Components/Sections/Comments/EditComment"
+import { EditTestimonial } from "./Components/Sections/Testimonial/EditTestimonial"
 import { EditNotice } from "./Components/Sections/Notices/EditNotice"
-import { DeleteComment } from "./Components/Sections/Comments/DeleteComment"
+import { DeleteTestimonial } from "./Components/Sections/Testimonial/DeleteTestimonial"
 import { DeleteNotice } from "./Components/Sections/Notices/DeleteNotice"
 
 export function Admin() {
@@ -23,19 +23,19 @@ export function Admin() {
 				{/* Seção de Criação */}
 				<section className="mt-6">
 					<Badge text="Criar" />
-					<CreateComment />
+					<CreateTestimonial />
 					<CreateNotice />
 				</section>
 
 				{/* Seção de Edição */}
 				<Badge text="Editar" />
 				<section>
-					<EditComment />
+					<EditTestimonial />
 					<EditNotice />
 				</section>
 				{/* Seção de Exclusão */}
 				<Badge text="Deletar" />
-				<DeleteComment />
+				<DeleteTestimonial />
 				<DeleteNotice />
 			</main>
 		</div>

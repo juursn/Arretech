@@ -5,7 +5,7 @@ interface StaticInputProps {
 
 export function StaticInput({ value, label }: StaticInputProps) {
 	return (
-		<div className="flex flex-col w-full max-w-xs gap-1">
+		<form className="flex flex-col w-full max-w-xs gap-1 bg-card-gray py-4 px-2 rounded-xl">
 			<label className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400">
 				{label}
 			</label>
@@ -15,6 +15,6 @@ export function StaticInput({ value, label }: StaticInputProps) {
 					{value}
 				</span>
 			</div>
-		</div>
+		</form>
 	)
 }

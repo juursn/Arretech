@@ -1,43 +1,50 @@
 {
-	"homepage": "https://renangomes1512.github.io/",
-	"name": "arretech",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"lint": "eslint .",
-		"preview": "vite preview",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist"
-	},
-	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^7.3.1",
-		"@fortawesome/free-brands-svg-icons": "^7.3.1",
-		"@fortawesome/free-regular-svg-icons": "^7.3.1",
-		"@fortawesome/free-solid-svg-icons": "^7.3.1",
-		"@fortawesome/react-fontawesome": "^3.5.0",
-		"@phosphor-icons/react": "^2.1.10",
-		"@tailwindcss/vite": "^4.3.3",
-		"lucide-react": "^1.34.0",
-		"motion": "^13.1.1",
-		"react": "^19.2.8",
-		"react-dom": "^19.2.8",
-		"react-icons": "^5.7.0",
-		"react-router-dom": "^7.18.4",
-		"tailwindcss": "^4.3.3",
-		"yarn": "^1.22.22"
-	},
-	"devDependencies": {
-		"@types/node": "^24.13.3",
-		"@types/react": "^19.2.17",
-		"@types/react-dom": "^19.2.3",
-		"@vitejs/plugin-react": "^6.0.4",
-		"gh-pages": "^6.3.0",
-		"globals": "^17.7.0",
-		"msw": "^2.15.0",
-		"typescript": "~6.0.2",
-		"vite": "^8.2.0"
-	}
+  "homepage": "https://renangomes1512.github.io/",
+  "name": "arretech",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-regular-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@tailwindcss/vite": "^4.3.3",
+    "axios": "^1.20.0",
+    "lucide-react": "^1.34.0",
+    "motion": "^13.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "react-router-dom": "^7.18.4",
+    "react-toastify": "^11.1.0",
+    "tailwindcss": "^4.3.3",
+    "yarn": "^1.22.22"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.7.0",
+    "msw": "^2.15.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }
