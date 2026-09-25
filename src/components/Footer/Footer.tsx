@@ -1,6 +1,6 @@
 import { titulo } from "../../assets"
 import { services } from "../../data/services"
-import { NavLink } from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons"
@@ -8,13 +8,8 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 
 export const Footer = () => {
 	return (
-<<<<<<< HEAD
 		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5">
 			<div className="flex flex-col justify-between gap-10 lg:flex-row border-b pb-10">
-=======
-		<footer className="flex flex-col gap-10 p-6 text-white border-t bg-primary-blue dark:bg-dark border-t-white/5 mt-6">
-			<div className="flex flex-col justify-between gap-10 lg:flex-row">
->>>>>>> 8d5d8f154c9544634c4a42d498592836b5f5a0a9
 				<div className="flex flex-col gap-4">
 					<img src={titulo} alt="" className="w-15" />
 					<p className="w-11/12 sm:w-1/2 font-light text-sm min-w-[45%]">
