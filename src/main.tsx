@@ -8,7 +8,6 @@ import "./index.css"
 import { App } from "./App.tsx"
 import { HashRouter } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext.tsx"
-import { bypass } from "msw"
 
 //Inicializando o Mock MSW
 async function enableMocking() {

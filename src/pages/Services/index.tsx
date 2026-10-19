@@ -6,6 +6,12 @@ import { ServiceCard } from "./components/Card/ServiceCard"
 import { motion } from "motion/react"
 
 export function Services() {
+	const handleScrollToService = (id: string) => {
+		const element = document.getElementById(id)
+		if (element) {
+			element.scrollIntoView({ behavior: "smooth" })
+		}
+	}
 	return (
 		<section className="flex flex-col bg-light dark:bg-dark min-h-screen">
 			<NavBar />
@@ -19,15 +25,16 @@ export function Services() {
 						<li
 							className="cursor-pointer hover:underline hover:underline-offset-2 hover:decoration-2 decoration-sky-500"
 							key={service.id}
+							onClick={() => handleScrollToService(service.id)}
 						>
-							<a href={`#${service.id}`}>{service.label}</a>
+							{service.label}
 						</li>
 					))}
 				</ol>
 			</section>
 			{services.map(service => (
 				<section
-					className="flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
+					className="flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass scroll-mt-20.5"
 					id={service.id}
 					key={service.id}
 				>

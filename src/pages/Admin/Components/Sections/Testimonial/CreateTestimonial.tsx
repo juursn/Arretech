@@ -2,35 +2,41 @@ import React, { useState } from "react"
 import { Button } from "../../ui/Button"
 import { FileInput } from "../../ui/FileInput"
 import { Input } from "../../ui/Input"
-import { toast } from "react-toastify"
 import type { Testimonial } from "../../../../../types/testImonial"
+import { toast } from "react-toastify"
 import { createTestimonial } from "../../../../../api/testImonial"
 
-type TestimonialFormData = Omit<Testimonial, "id">
-const INITIAL_STATE: TestimonialFormData = {
+const INITIAL_STATE = {
 	author: "",
 	content: "",
 	avatarUrl: "",
 	role: "",
 	company: "",
-}
+} as Testimonial
 
 export function CreateTestimonial() {
 	const [isLoading, setIsLoading] = useState(false)
+	const [Error, setError] = useState(false)
 	const [formData, setFormData] = useState(INITIAL_STATE)
+	function handleChange(
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) {
+		const { name, value } = e.target
 
-	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		setFormData(prev => ({
+			...prev,
+			[name]: value,
+		}))
+	}
+	async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
 		e.preventDefault()
 		setIsLoading(true)
-
+		setError(false)
 		try {
-			await createTestimonial(formData)
-			setFormData(INITIAL_STATE)
-			toast.success("Depoimento enviado com sucesso!")
+			createTestimonial(formData)
+			toast.success("Depoimento Enviado com sucesso!")
 		} catch (err) {
-			toast.error("Ocorreu um erro ao enviar.")
-		} finally {
-			setIsLoading(false)
+			setError(true)
 		}
 	}
 
@@ -44,38 +50,53 @@ export function CreateTestimonial() {
 				className="bg-card-offWhite dark:bg-card-black my-4 py-6 px-4 rounded-md shadow-[0px_0px_4px_1px_rgba(0,0,0,0.25)] text-input-tx-L dark:text-input-tx-D flex flex-col gap-4"
 			>
 				<textarea
-					name="comentario"
+					name="content"
 					id="comentario"
 					placeholder="Digite o comentário"
+					required
 					className="bg-input-light dark:bg-input-dark w-full h-20 max-h-60 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary-blue transition-all text-sm"
-				></textarea>
+					onChange={handleChange}
+				/>
 
 				<Input
 					type="text"
 					placeholder="Autor"
-					name="autor-comentario"
+					name="author"
 					id="autor-comentario"
+					onChange={handleChange}
+					required
 				/>
 
-				<FileInput id="imagem-comentario" name="imagem-comentario" />
+				<FileInput
+					id="imagem-comentario"
+					name="avatarUrl"
+					onChange={handleChange}
+				/>
 
 				<Input
 					type="text"
-					name="cargo-comentario"
+					name="role"
 					id="cargo-comentario"
 					placeholder="Cargo"
+					onChange={handleChange}
+					required
 				/>
 
 				<Input
 					type="text"
 					placeholder="Empresa"
-					name="empresa-comentario"
+					name="company"
 					id="empresa-comentario"
+					onChange={handleChange}
+					required
 				/>
 
 				<Button disabled={isLoading} type="submit">
 					{isLoading ? "Carregando..." : "Enviar"}
 				</Button>
+				{Error && (
+					<p className="text-red-800 text-xs uppercase">Erro ao enviar!</p>
+				)}
 			</form>
 		</div>
 	)
