@@ -30,7 +30,7 @@ export function Services() {
 			</section>
 			{services.map(service => (
 				<section
-					className="scroll-mt-24 flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
+					className="scroll-mt-20.5 flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
 					id={service.id}
 					key={service.id}
 				>

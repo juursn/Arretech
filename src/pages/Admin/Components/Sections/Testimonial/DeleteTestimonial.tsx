@@ -8,9 +8,19 @@ export function DeleteTestimonial() {
 			<h2 className="admin-section-title">
 				Comentários
 			</h2>
-			<div className="admin-panel">
+			<div className="admin-panel flex-row flex-wrap">
 				{testimonial.map(item => (
-					<StaticInput key={item.id} label={item.author} value={item.content} />
+					<StaticInput
+						key={item.id}
+						primaryField={{
+							label: "Comentário",
+							content: item.content || "",
+						}}
+						secondaryField={{
+							label: "Autor",
+							content: item.author || "",
+						}}
+					/>
 				))}
 			</div>
 		</>

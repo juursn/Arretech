@@ -46,7 +46,8 @@ export function FileInput({ id, onChange, ...props }: FileInputProps) {
 				id={id}
 				accept="image/*"
 				onChange={handleFile}
-				className="hidden"
+				className="absolute w-px h-px opacity-0"
+				required
 				{...props}
 			/>
 		</label>
