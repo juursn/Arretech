@@ -1,16 +1,16 @@
-import { Button } from "../../ui/Button"
-import { DateInput } from "../../ui/DateInput"
-import { FileInput } from "../../ui/FileInput"
-import { Input } from "../../ui/Input"
-import { Select } from "../../ui/Select"
+import { Button } from "../../UI/Button"
+import { DateInput } from "../../UI/DateInput"
+import { FileInput } from "../../UI/FileInput"
+import { Input } from "../../UI/Input"
+import { Select } from "../../UI/Select"
 
 export function CreateNotice() {
 	return (
 		<div className="my-6">
-			<h2 className="text-2xl font-bold text-primary-blue dark:text-white">
+			<h2 className="admin-section-title">
 				Notícias
 			</h2>
-			<form className="bg-card-offWhite dark:bg-card-black my-4 py-6 px-4 rounded-md shadow-[0px_0px_4px_1px_rgba(0,0,0,0.25)] text-input-tx-L dark:text-input-tx-D flex flex-col gap-4">
+			<form className="admin-panel">
 				<FileInput id="imagem-noticias" name="imagem-noticias" />
 
 				<Input

@@ -11,8 +11,13 @@ import {
 import { useTheme } from "../../hooks/useTheme"
 
 export const NavBar = () => {
-	function ScrollTop() {
+	function scrollTop() {
 		window.scrollTo({ top: 0, behavior: "smooth" })
+	}
+	// Âncoras nativas alterariam o hash usado pelo roteador; aqui só rolamos a página.
+	function scrollToContact() {
+		setIsOpen(false)
+		document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })
 	}
 	const [isOpen, setIsOpen] = useState(false)
 	const { theme, toggleTheme } = useTheme()
@@ -22,7 +27,7 @@ export const NavBar = () => {
 			<div className="flex items-center justify-between">
 				{/* Logo */}
 				<div>
-					<NavLink to="/" onClick={ScrollTop}>
+					<NavLink to="/" onClick={scrollTop}>
 						<img
 							src={theme === "dark" ? logoBranca : logoAzul}
 							alt="Logo da Empresa ArreTech"
@@ -35,26 +40,24 @@ export const NavBar = () => {
 				<nav className="items-center hidden gap-10 font-medium sm:flex">
 					<NavLink
 						to="/Noticias"
-						onClick={ScrollTop}
-						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
+						onClick={scrollTop}
+						className="nav-link-desktop"
 					>
 						Notícias
 					</NavLink>
 
-					<a
-						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
-						onClick={() => {
-							const element = document.getElementById("contato")
-							element?.scrollIntoView({ behavior: "smooth" })
-						}}
+					<button
+						type="button"
+						className="nav-link-desktop cursor-pointer"
+						onClick={scrollToContact}
 					>
 						Contato
-					</a>
+					</button>
 
 					<NavLink
 						to="/Servicos"
-						className="transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple"
-						onClick={ScrollTop}
+						className="nav-link-desktop"
+						onClick={scrollTop}
 					>
 						Serviços
 					</NavLink>
@@ -98,27 +101,27 @@ export const NavBar = () => {
 						to="/Noticias"
 						onClick={() => {
 							setIsOpen(false)
-							ScrollTop()
+							scrollTop()
 						}}
-						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
+						className="nav-link-mobile"
 					>
 						Notícias
 					</NavLink>
-					<a
-						href="#contato"
-						onClick={() => setIsOpen(false)}
-						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
+					<button
+						type="button"
+						onClick={scrollToContact}
+						className="nav-link-mobile"
 					>
 						Contato
-					</a>
+					</button>
 
 					<NavLink
 						to="/Servicos"
 						onClick={() => {
 							setIsOpen(false)
-							ScrollTop()
+							scrollTop()
 						}}
-						className="hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200"
+						className="nav-link-mobile"
 					>
 						Serviços
 					</NavLink>

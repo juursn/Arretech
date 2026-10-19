@@ -1,16 +1,17 @@
 import { useState } from "react"
-import { EditableInput } from "../../ui/EditableInput"
+import { EditableInput } from "../../UI/EditableInput"
 
 export function EditNotice() {
+	// Esta edição altera apenas o estado da tela; ainda não persiste a notícia em uma API.
 	const [newValue, setNewValue] = useState(
 		"A ArreTech revolucionou a instria de tecnologia"
 	)
 	return (
 		<>
-			<h2 className="text-2xl font-bold text-primary-blue dark:text-white">
+			<h2 className="admin-section-title">
 				Notícias
 			</h2>
-			<div className="bg-card-offWhite dark:bg-card-black my-4 py-6 px-4 rounded-md shadow-[0px_0px_4px_1px_rgba(0,0,0,0.25)] text-input-tx-L dark:text-input-tx-D flex flex-col gap-4">
+			<div className="admin-panel">
 				<EditableInput
 					label="Notícia"
 					value={newValue}

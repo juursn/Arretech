@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Button } from "../../ui/Button"
-import { FileInput } from "../../ui/FileInput"
-import { Input } from "../../ui/Input"
+import { Button } from "../../UI/Button"
+import { FileInput } from "../../UI/FileInput"
+import { Input } from "../../UI/Input"
 import { toast } from "react-toastify"
 import type { Testimonial } from "../../../../../types/testImonial"
 import { createTestimonial } from "../../../../../api/testImonial"
@@ -17,6 +17,7 @@ const INITIAL_STATE: TestimonialFormData = {
 
 export function CreateTestimonial() {
 	const [isLoading, setIsLoading] = useState(false)
+	// Os inputs ainda não atualizam este estado; o envio usa os valores vazios de INITIAL_STATE.
 	const [formData, setFormData] = useState(INITIAL_STATE)
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,12 +37,12 @@ export function CreateTestimonial() {
 
 	return (
 		<div className="my-6">
-			<h2 className="text-2xl font-bold text-primary-blue dark:text-white">
+			<h2 className="admin-section-title">
 				Comentários
 			</h2>
 			<form
 				onSubmit={handleSubmit}
-				className="bg-card-offWhite dark:bg-card-black my-4 py-6 px-4 rounded-md shadow-[0px_0px_4px_1px_rgba(0,0,0,0.25)] text-input-tx-L dark:text-input-tx-D flex flex-col gap-4"
+				className="admin-panel"
 			>
 				<textarea
 					name="comentario"
