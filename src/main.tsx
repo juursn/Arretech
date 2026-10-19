@@ -9,18 +9,18 @@ import { App } from "./App.tsx"
 import { HashRouter } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext.tsx"
 
-//Inicializando o Mock MSW
+// Em desenvolvimento, o MSW intercepta a API no navegador; em produção ele não inicia.
 async function enableMocking() {
 	if (!import.meta.env.DEV) {
 		return
 	}
 
-	const { worker } = await import("../src/mock/browser.ts")
+	const { worker } = await import("./mock/browser.ts")
 
-	// Retorna a promessa de inicialização
+	// A renderização aguarda o worker para evitar requisições antes dos mocks estarem prontos.
 	return worker.start({
 		serviceWorker: {
-			url: "/Arretech/mockServiceWorker.js",
+			url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
 		},
 		onUnhandledRequest: "bypass",
 	})

@@ -52,23 +52,23 @@ export function AdminNavBar() {
 			<div className={`${isOpen ? "block" : "hidden"} lg:block mt-4 lg:mt-0`}>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Visualizar Alterações</h3>
-					<NavLink to="/Arretech/">Tela Inicial</NavLink>
-					<NavLink to="/Arretech/Noticias">Blog</NavLink>
+					<NavLink to="/">Tela Inicial</NavLink>
+					<NavLink to="/Noticias">Blog</NavLink>
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Criar</h3>
-					<a href="">Comentários</a>
-					<a href="">Notícias</a>
+					<NavLink to="/Admin#criar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
+					<NavLink to="/Admin#criar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Editar</h3>
-					<a href="">Comentários</a>
-					<a href="">Notícias</a>
+					<NavLink to="/Admin#editar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
+					<NavLink to="/Admin#editar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Deletar</h3>
-					<a href="">Comentários</a>
-					<a href="">Notícias</a>
+					<NavLink to="/Admin#deletar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
+					<NavLink to="/Admin#deletar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
 				</div>
 			</div>
 		</div>

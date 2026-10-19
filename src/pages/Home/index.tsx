@@ -40,6 +40,7 @@ export const Home = () => {
 	const carrosselRef3 = useRef<HTMLDivElement>(null)
 	const [showLeft, setShowLeft] = useState(false)
 
+	// Cada referência identifica qual carrossel deve receber o deslocamento horizontal.
 	const rolar = (
 		ref: React.RefObject<HTMLDivElement | null>,
 		distancia: number
@@ -57,7 +58,7 @@ export const Home = () => {
 	}
 
 	return (
-		<body className="w-full dark:bg-[#1f1e27] dark:text-white">
+		<div className="w-full dark:bg-[#1f1e27] dark:text-white">
 			{showElement && <NavBar />}
 			<header className=" flex flex-col items-center relative w-full mt-7">
 				<nav className="flex justify-center w-[95%]">
@@ -329,6 +330,6 @@ export const Home = () => {
 				</div>
 			</aside>
 			<Footer />
-		</body>
+		</div>
 	)
 }

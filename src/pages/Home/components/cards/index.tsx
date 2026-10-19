@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
+import { QuotesIcon } from "@phosphor-icons/react"
 
 interface CardsProps {
     imagem: ReactNode
@@ -8,7 +9,7 @@ interface CardsProps {
 
 export const Cards = ({ imagem, subtitulo, texto }: CardsProps) => {
     return (
-        <div className="flex justify-center items-center text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
+        <div className="home-card items-center">
             {imagem}
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF]
                             via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
@@ -27,7 +28,7 @@ interface CardsProps2 {
 
 export const Cards2 = ({ imagem, subtitulo, texto, botao }: CardsProps2) => {
     return (
-        <div className="flex justify-center items-center text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
+        <div className="home-card items-center">
             {imagem}
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
             <p className="w-[85%] text-xl font-light">{texto}</p>
@@ -43,11 +44,9 @@ interface CardsProps3 {
     cargo: string
 }
 
-import { QuotesIcon } from "@phosphor-icons/react"
-
 export const Cards3 = ({ texto, logo, subtitulo, cargo }: CardsProps3) => {
     return (
-        <div className="flex justify-center text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
+        <div className="home-card">
             <QuotesIcon size={50} weight="fill" className="text-blue-500" />
             <div className="w-full flex flex-col items-center gap-10">
                 <p className="w-[90%] text-lg font-light">{texto}</p>

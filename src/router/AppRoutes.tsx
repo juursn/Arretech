@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import { LoadingScreen } from "./LoadingScreen"
 
+// lazy carrega cada página sob demanda; Suspense mostra a espera durante o download.
 const Home = lazy(() =>
 	import("../pages/Home").then(m => ({ default: m.Home }))
 )

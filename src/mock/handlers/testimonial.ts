@@ -3,6 +3,7 @@ import { testImonialMock } from "../data/testImonialMock"
 import type { Testimonial } from "../../types/testImonial"
 
 export function getStoredTestimonials(): Testimonial[] {
+	// Usa os dados iniciais só no primeiro acesso; depois lê as alterações deste navegador.
 	const data = localStorage.getItem(STORAGE_KEY)
 	if (!data) {
 		const initialData = testImonialMock
