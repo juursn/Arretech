@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-hePW80VL.js";import{d as t,o as n}from"./index-CqYJ4v2X.js";var r=e(t(),1);function i(){let{hash:e,key:t}=n();(0,r.useEffect)(()=>{e&&document.getElementById(e.slice(1))?.scrollIntoView({behavior:`smooth`})},[e,t])}export{i as t};
