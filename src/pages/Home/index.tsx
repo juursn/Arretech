@@ -4,7 +4,6 @@ import {
 	nvidia,
 	pesquisaai,
 	coment,
-	img3,
 	pesquisaaiDark,
 	nvidiaDark,
 	painelDark,
@@ -15,13 +14,62 @@ import { Footer } from "../../components/Footer/Footer"
 import { Hero } from "./components/Hero/Hero"
 import { NavBar } from "../../components/NavBar/NavBar"
 import { useState, useEffect, useRef } from "react"
-import { CaretLeftIcon, CaretRightIcon, LightningIcon, NetworkIcon, UsersThreeIcon, RobotIcon, FileTextIcon } from "@phosphor-icons/react"
-import { FaBrain, FaEye, FaChartDiagram, FaShield  } from "react-icons/fa6";
-import { LuChartLine } from "react-icons/lu";
-import { IoChevronDownSharp } from "react-icons/io5";
+import {
+	CaretLeftIcon,
+	CaretRightIcon,
+	LightningIcon,
+	NetworkIcon,
+	UsersThreeIcon,
+	RobotIcon,
+	FileTextIcon,
+} from "@phosphor-icons/react"
+import { FaBrain, FaEye, FaChartDiagram, FaShield } from "react-icons/fa6"
+import { LuChartLine } from "react-icons/lu"
+import { IoChevronDownSharp } from "react-icons/io5"
+import { getTestimonial } from "../../api/testImonial"
+import { getNotices } from "../../api/notice"
+import { getApiErrorMessage } from "../../api/axios"
+import type { Testimonial } from "../../types/testImonial"
+import type { Notice } from "../../types/notice"
 
 export const Home = () => {
 	const [showElement, setShowElement] = useState(false)
+	const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+	const [notices, setNotices] = useState<Notice[]>([])
+	const [isLoadingContent, setIsLoadingContent] = useState(true)
+	const [contentErrors, setContentErrors] = useState({
+		testimonials: "",
+		notices: "",
+	})
+	useEffect(() => {
+		const controller = new AbortController()
+		Promise.allSettled([
+			getTestimonial(controller.signal),
+			getNotices(controller.signal),
+		]).then(([comments, news]) => {
+			if (controller.signal.aborted) return
+			if (comments.status === "fulfilled") setTestimonials(comments.value)
+			if (news.status === "fulfilled") setNotices(news.value)
+			setContentErrors({
+				testimonials:
+					comments.status === "rejected"
+						? getApiErrorMessage(
+								comments.reason,
+								"Não foi possível carregar os depoimentos."
+							)
+						: "",
+				notices:
+					news.status === "rejected"
+						? getApiErrorMessage(
+								news.reason,
+								"Não foi possível carregar as notícias."
+							)
+						: "",
+			})
+			setIsLoadingContent(false)
+		})
+		return () => controller.abort()
+	}, [])
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -48,8 +96,8 @@ export const Home = () => {
 		ref.current?.scrollBy({
 			left: distancia,
 			behavior: "smooth",
-		});
-	};
+		})
+	}
 
 	const verificarScroll = (e: React.UIEvent<HTMLDivElement>) => {
 		const elemento = e.currentTarget
@@ -60,11 +108,11 @@ export const Home = () => {
 	return (
 		<div className="w-full dark:bg-[#1f1e27] dark:text-white">
 			{showElement && <NavBar />}
-			<header className=" flex flex-col items-center relative w-full mt-7">
+			<header className=" flex flex-col items-center relative w-full pt-7 ">
 				<nav className="flex justify-center w-[95%]">
 					<img
 						src={painel}
-						alt="painel" 
+						alt="painel"
 						className="w-full h-[650px] rounded-4xl sm:h-[550px] block dark:hidden"
 					/>
 					<img
@@ -100,7 +148,9 @@ export const Home = () => {
 							</h1>
 						</div>
 						<div
-							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef1} onScroll={verificarScroll}
+							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							ref={carrosselRef1}
+							onScroll={verificarScroll}
 						>
 							<Cards
 								imagem={<FaBrain size={38} className="text-blue-500" />}
@@ -108,22 +158,43 @@ export const Home = () => {
 								texto="Desenvolvemos sistemas de IA personalizados que aprendem e se adaptam às necessidades do seu negócio."
 							/>
 							<Cards
-								imagem={<LightningIcon size={38} weight="fill" className="text-blue-500" />}
+								imagem={
+									<LightningIcon
+										size={38}
+										weight="fill"
+										className="text-blue-500"
+									/>
+								}
 								subtitulo="Desenvolvimento Ágil"
 								texto="Metodologias modernas de desenvolvimento para entregar soluções robustas e escaláveis rapidamente."
 							/>
 							<Cards
-								imagem={<NetworkIcon size={38} weight="fill" className="text-blue-500" />}
+								imagem={
+									<NetworkIcon
+										size={38}
+										weight="fill"
+										className="text-blue-500"
+									/>
+								}
 								subtitulo="Automação Inteligente"
 								texto="Automatizamos processos complexos usando IA para aumentar eficiência e reduzir custos operacionais."
 							/>
 							<Cards
-								imagem={<UsersThreeIcon size={38} weight="fill" className="text-blue-500" />}
+								imagem={
+									<UsersThreeIcon
+										size={38}
+										weight="fill"
+										className="text-blue-500"
+									/>
+								}
 								subtitulo="Suporte Especializado"
 								texto="Equipe dedicada de especialistas em IA para garantir o sucesso dos seus projetos."
 							/>
 						</div>
-						<button className="absolute flex right-10" onClick={() => rolar(carrosselRef1, 300)}>
+						<button
+							className="absolute flex right-10"
+							onClick={() => rolar(carrosselRef1, 300)}
+						>
 							<CaretRightIcon />
 						</button>
 						{showLeft && (
@@ -180,9 +251,19 @@ export const Home = () => {
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Conheça Nossos Serviços
 						</h1>
-						<div className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef2} onScroll={verificarScroll}>
+						<div
+							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							ref={carrosselRef2}
+							onScroll={verificarScroll}
+						>
 							<Cards2
-								imagem={<RobotIcon size={38} weight="fill" className="text-blue-500" />}
+								imagem={
+									<RobotIcon
+										size={38}
+										weight="fill"
+										className="text-blue-500"
+									/>
+								}
 								subtitulo="Chatbots Inteligentes"
 								texto="Desenvolvimento de assistentes virtuais com processamento de linguagem natural para atendimento automatizado."
 								botao="Saiba mais"
@@ -206,7 +287,13 @@ export const Home = () => {
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={<FileTextIcon size={38} weight="fill" className="text-blue-500" />}
+								imagem={
+									<FileTextIcon
+										size={38}
+										weight="fill"
+										className="text-blue-500"
+									/>
+								}
 								subtitulo="Processamento de Texto"
 								texto="Análise semântica e processamento de grandes volumes de texto para extração de insights."
 								botao="Saiba mais"
@@ -218,7 +305,10 @@ export const Home = () => {
 								botao="Saiba mais"
 							/>
 						</div>
-						<button className="absolute flex right-10 mt-30" onClick={() => rolar(carrosselRef2, 300)}>
+						<button
+							className="absolute flex right-10 mt-30"
+							onClick={() => rolar(carrosselRef2, 300)}
+						>
 							<CaretRightIcon />
 						</button>
 						{showLeft && (
@@ -234,27 +324,36 @@ export const Home = () => {
 						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							O que Nossos Clientes Dizem
 						</h1>
-						<div className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full" ref={carrosselRef3} onScroll={verificarScroll}>
-							<Cards3
-								texto="A ArreTech revolucionou nossos processos com Sistemas Inteligentes. Com tecnologia nossos processos aumentaram nossa eficiência em 40% e melhorou significativamente a experiência dos associados."
-								logo={coment}
-								subtitulo="Daniel Bruno"
-								cargo="Coordenador, Amerifa -PB"
-							/>
-							<Cards3
-								texto="A ArreTech revolucionou nossos processos com Sistemas Inteligentes. Com tecnologia nossos processos aumentaram nossa eficiência em 40% e melhorou significativamente a experiência dos associados."
-								logo={coment}
-								subtitulo="Daniel Bruno"
-								cargo="Coordenador, Amerifa -PB"
-							/>
-							<Cards3
-								texto="A ArreTech revolucionou nossos processos com Sistemas Inteligentes. Com tecnologia nossos processos aumentaram nossa eficiência em 40% e melhorou significativamente a experiência dos associados."
-								logo={coment}
-								subtitulo="Daniel Bruno"
-								cargo="Coordenador, Amerifa -PB"
-							/>
+						<div
+							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							ref={carrosselRef3}
+							onScroll={verificarScroll}
+						>
+							{isLoadingContent && (
+								<p role="status">Carregando depoimentos...</p>
+							)}
+							{contentErrors.testimonials && (
+								<p role="alert">{contentErrors.testimonials}</p>
+							)}
+							{!isLoadingContent &&
+								!contentErrors.testimonials &&
+								testimonials.length === 0 && (
+									<p>Nenhum depoimento cadastrado.</p>
+								)}
+							{testimonials.map(item => (
+								<Cards3
+									key={item.id}
+									texto={item.content}
+									logo={item.avatarUrl || coment}
+									subtitulo={item.author}
+									cargo={`${item.role}, ${item.company}`}
+								/>
+							))}
 						</div>
-						<button className="absolute flex right-10 mt-30" onClick={() => rolar(carrosselRef3, 300)}>
+						<button
+							className="absolute flex right-10 mt-30"
+							onClick={() => rolar(carrosselRef3, 300)}
+						>
 							<CaretRightIcon />
 						</button>
 						{showLeft && (
@@ -288,24 +387,25 @@ export const Home = () => {
 							Notícias Recentes
 						</h1>
 						<div className="flex flex-col gap-5 mt-5 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
-							<Cards4
-								imagem={img3}
-								data="16 de junho, 2025"
-								tipo="Reunião"
-								texto="Encontro voltado para análise de indicadores do projeto em desenvolvimento"
-							/>
-							<Cards4
-								imagem={img3}
-								data="16 de junho, 2025"
-								tipo="Reunião"
-								texto="Encontro voltado para análise de indicadores do projeto em desenvolvimento"
-							/>
-							<Cards4
-								imagem={img3}
-								data="16 de junho, 2025"
-								tipo="Reunião"
-								texto="Encontro voltado para análise de indicadores do projeto em desenvolvimento"
-							/>
+							{isLoadingContent && <p role="status">Carregando notícias...</p>}
+							{contentErrors.notices && (
+								<p role="alert">{contentErrors.notices}</p>
+							)}
+							{!isLoadingContent &&
+								!contentErrors.notices &&
+								notices.length === 0 && <p>Nenhuma notícia cadastrada.</p>}
+							{notices
+								.toSorted((a, b) => b.date.localeCompare(a.date))
+								.slice(0, 3)
+								.map(item => (
+									<Cards4
+										key={item.id}
+										imagem={item.imageUrl}
+										data={item.date}
+										tipo={item.tag}
+										texto={item.title}
+									/>
+								))}
 						</div>
 					</div>
 					<div className="flex flex-col gap-10 mb-10">
@@ -313,16 +413,16 @@ export const Home = () => {
 							FAQ
 						</h1>
 						<div className="flex flex-col gap-4">
-							<Cards5 
+							<Cards5
 								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
 								imagem={<IoChevronDownSharp className="text-blue-500" />}
 							/>
-							<Cards5 
-								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" 
+							<Cards5
+								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
 								imagem={<IoChevronDownSharp className="text-blue-500" />}
 							/>
-							<Cards5 
-								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?" 
+							<Cards5
+								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
 								imagem={<IoChevronDownSharp className="text-blue-500" />}
 							/>
 						</div>

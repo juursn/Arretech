@@ -57,18 +57,42 @@ export function AdminNavBar() {
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Criar</h3>
-					<NavLink to="/Admin#criar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
-					<NavLink to="/Admin#criar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
+					<NavLink
+						to="/Admin#criar-comentarios"
+						onClick={() => setIsOpen(false)}
+					>
+						Comentários
+					</NavLink>
+					<NavLink to="/Admin#criar-noticias" onClick={() => setIsOpen(false)}>
+						Notícias
+					</NavLink>
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Editar</h3>
-					<NavLink to="/Admin#editar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
-					<NavLink to="/Admin#editar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
+					<NavLink
+						to="/Admin#editar-comentarios"
+						onClick={() => setIsOpen(false)}
+					>
+						Comentários
+					</NavLink>
+					<NavLink to="/Admin#editar-noticias" onClick={() => setIsOpen(false)}>
+						Notícias
+					</NavLink>
 				</div>
 				<div className={linksAdmin}>
 					<h3 className={titleLinks}>Deletar</h3>
-					<NavLink to="/Admin#deletar-comentarios" onClick={() => setIsOpen(false)}>Comentários</NavLink>
-					<NavLink to="/Admin#deletar-noticias" onClick={() => setIsOpen(false)}>Notícias</NavLink>
+					<NavLink
+						to="/Admin#deletar-comentarios"
+						onClick={() => setIsOpen(false)}
+					>
+						Comentários
+					</NavLink>
+					<NavLink
+						to="/Admin#deletar-noticias"
+						onClick={() => setIsOpen(false)}
+					>
+						Notícias
+					</NavLink>
 				</div>
 			</div>
 		</div>

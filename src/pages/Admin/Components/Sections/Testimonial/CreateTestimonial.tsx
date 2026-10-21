@@ -5,6 +5,7 @@ import { Input } from "../../UI/Input"
 import type { Testimonial } from "../../../../../types/testImonial"
 import { toast } from "react-toastify"
 import { createTestimonial } from "../../../../../api/testImonial"
+import { getApiErrorMessage } from "../../../../../api/axios"
 
 type TestimonialFormData = Omit<Testimonial, "id">
 const INITIAL_STATE: TestimonialFormData = {
@@ -15,9 +16,15 @@ const INITIAL_STATE: TestimonialFormData = {
 	company: "",
 }
 
-export function CreateTestimonial() {
+export function CreateTestimonial({
+	onCreated,
+	disabled,
+}: {
+	onCreated: (item: Testimonial) => void
+	disabled?: boolean
+}) {
 	const [isLoading, setIsLoading] = useState(false)
-	const [Error, setError] = useState(false)
+	const [error, setError] = useState("")
 	const [formData, setFormData] = useState(INITIAL_STATE)
 	function handleChange(
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,14 +38,30 @@ export function CreateTestimonial() {
 	}
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
+		if (isLoading || disabled) return
+		if (
+			[formData.content, formData.author, formData.role, formData.company].some(
+				value => !value.trim()
+			)
+		) {
+			setError("Preencha os campos obrigatórios com texto válido.")
+			return
+		}
 		setIsLoading(true)
-		setError(false)
+		setError("")
 		try {
-			await createTestimonial(formData)
+			const testimonial = await createTestimonial({
+				...formData,
+				content: formData.content.trim(),
+				author: formData.author.trim(),
+				role: formData.role.trim(),
+				company: formData.company.trim(),
+			})
+			onCreated(testimonial)
 			setFormData(INITIAL_STATE)
 			toast.success("Depoimento Enviado com sucesso!")
 		} catch (err) {
-			setError(true)
+			setError(getApiErrorMessage(err, "Não foi possível enviar o depoimento."))
 		} finally {
 			setIsLoading(false)
 		}
@@ -46,14 +69,11 @@ export function CreateTestimonial() {
 
 	return (
 		<div className="my-6">
-			<h2 className="admin-section-title">
-				Comentários
-			</h2>
-			<form
-				onSubmit={handleSubmit}
-				className="admin-panel"
-			>
+			<h2 className="admin-section-title">Comentários</h2>
+			<form onSubmit={handleSubmit} className="admin-panel">
 				<textarea
+					value={formData.content}
+					disabled={isLoading || disabled}
 					name="content"
 					id="comentario"
 					placeholder="Digite o comentário"
@@ -63,6 +83,8 @@ export function CreateTestimonial() {
 				/>
 
 				<Input
+					value={formData.author}
+					disabled={isLoading || disabled}
 					type="text"
 					placeholder="Autor"
 					name="author"
@@ -74,12 +96,18 @@ export function CreateTestimonial() {
 				<FileInput
 					id="imagem-comentario"
 					name="avatarUrl"
-					onChange={handleChange}
+					imageUrl={formData.avatarUrl}
+					onImageChange={avatarUrl =>
+						setFormData(prev => ({ ...prev, avatarUrl }))
+					}
+					disabled={isLoading || disabled}
 				/>
 
 				<Input
 					type="text"
 					name="role"
+					value={formData.role}
+					disabled={isLoading || disabled}
 					id="cargo-comentario"
 					placeholder="Cargo"
 					onChange={handleChange}
@@ -90,16 +118,20 @@ export function CreateTestimonial() {
 					type="text"
 					placeholder="Empresa"
 					name="company"
+					value={formData.company}
+					disabled={isLoading || disabled}
 					id="empresa-comentario"
 					onChange={handleChange}
 					required
 				/>
 
-				<Button disabled={isLoading} type="submit">
+				<Button disabled={isLoading || disabled} type="submit">
 					{isLoading ? "Carregando..." : "Enviar"}
 				</Button>
-				{Error && (
-					<p className="text-red-800 text-xs uppercase">Erro ao enviar!</p>
+				{error && (
+					<p role="alert" className="text-red-800 text-xs uppercase">
+						{error}
+					</p>
 				)}
 			</form>
 		</div>

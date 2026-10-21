@@ -23,7 +23,7 @@ export function AppRoutes() {
 				<Route path="/" element={<Home />} />
 				<Route path="/Noticias" element={<Blog />} />
 				<Route path="/Servicos" element={<Services />} />
-				<Route path="/Admin" element={<Admin />} />
+				<Route path="/Admin/*" element={<Admin />} />
 				{/* Fallback para evitar erro caso digitem uma rota inexistente */}
 				<Route path="*" element={<Home />} />
 			</Routes>

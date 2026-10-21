@@ -19,7 +19,7 @@ export function NoticeFilter({
 		{ id: "atualizações", label: "Atualizações" },
 		{ id: "bastidores", label: "Bastidores" },
 		{ id: "projetos", label: "Projetos" },
-		{ id: "noticias", label: "Notícias" },
+		{ id: "notícias", label: "Notícias" },
 		{ id: "Eventos", label: "Eventos" },
 	]
 

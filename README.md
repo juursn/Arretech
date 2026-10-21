@@ -1,75 +1,48 @@
-# React + TypeScript + Vite
+# Arretech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page em React, TypeScript, Vite e Tailwind CSS.
 
-Currently, two official plugins are available:
+Use Node.js 22.12 ou superior e instale as dependências com `npm ci`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Desenvolvimento
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Os mocks de API são ativados somente em desenvolvimento.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Verificação e build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm run build
+npm run preview
+npm audit
 ```
+
+O build executa a checagem TypeScript antes de gerar a pasta `dist`. O projeto não usa ESLint.
+
+## Dependências
+
+O override de `source-map-js` exige a versão corrigida 1.2.2 ou superior dentro da versão principal 1. O pacote npm `gh-pages` foi substituído pelo script `scripts/deploy.mjs` para remover sua dependência transitiva de `braces`, apontada como vulnerável na auditoria.
+
+## Publicação
+
+```sh
+npm run deploy
+```
+
+É necessário ter Git instalado, `user.name` e `user.email` configurados e permissão de escrita no remoto `origin`.
+
+Ao executar `npm run deploy`:
+
+1. O npm executa `predeploy`, que verifica o TypeScript e gera `dist`.
+2. O `deploy.mjs` prepara um checkout temporário da branch `gh-pages`.
+3. O script substitui os arquivos publicados pelo conteúdo de `dist` e cria um commit quando há mudanças.
+4. O Git envia esse commit para `origin/gh-pages`, e o script remove a pasta temporária.
+
+A branch de trabalho e o histórico de publicação são preservados. O site continua hospedado no GitHub Pages; apenas a ferramenta que envia os arquivos foi substituída.
+
+O script mantém `npm run deploy` funcionando sem reinstalar a dependência vulnerável. Ele não é uma exigência do GitHub Pages e pode ser substituído por outra ferramenta de publicação. Sua manutenção fica a cargo do projeto.
+
+Executar `node scripts/deploy.mjs` diretamente publica o conteúdo já existente em `dist`, sem gerar um novo build. Prefira `npm run deploy` para publicar uma versão atualizada.

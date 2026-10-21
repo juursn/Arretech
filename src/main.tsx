@@ -19,6 +19,7 @@ async function enableMocking() {
 
 	// A renderização aguarda o worker para evitar requisições antes dos mocks estarem prontos.
 	return worker.start({
+		quiet: true,
 		serviceWorker: {
 			url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
 		},
