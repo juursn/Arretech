@@ -1,11 +1,29 @@
 @import "tailwindcss";
 
-* {
-	font-family: "Montserrat", sans-serif;
+/* Estilos compartilhados; utilitários locais continuam disponíveis para variações. */
+@layer components {
+	.admin-panel {
+		@apply bg-card-offWhite dark:bg-card-black my-4 py-6 px-4 rounded-md shadow-[0px_0px_4px_1px_rgba(0,0,0,0.25)] text-input-tx-L dark:text-input-tx-D flex justify-center flex-wrap items-start gap-4;
+	}
+	.admin-section-title {
+		@apply text-2xl font-bold text-primary-blue dark:text-white;
+	}
+	.home-card {
+		@apply flex justify-center text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl hover:scale-105 transition-transform duration-300;
+	}
+	.nav-link-desktop {
+		@apply transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple;
+	}
+	.nav-link-mobile {
+		@apply hover:text-sky-500 dark:hover:text-gradient-babyBlue transition-colors ease-linear duration-200;
+	}
+	.label-input {
+		@apply text-xs tracking-wider font-semibold uppercase text-slate-700 dark:text-slate-200;
+	}
 }
 
-html {
-	scroll-behavior: smooth;
+* {
+	font-family: "Montserrat", sans-serif;
 }
 
 body,
@@ -69,6 +87,10 @@ html,
 	/* Cards Admin */
 	--color-card-black: #191919;
 	--color-card-offWhite: #f2f2f2;
+
+	/* Cards edit e delet */
+	--color-card-gray: #dedede;
+	--color-card-dark: #363636;
 	/* Input Color Admin */
 	--color-input-dark: #2c2c2c;
 	--color-input-light: rgba(255, 255, 255, 0.8);

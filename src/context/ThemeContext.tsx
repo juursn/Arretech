@@ -22,6 +22,7 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 )
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
+	// A escolha salva tem prioridade; sem ela, usamos a preferência do sistema.
 	const [theme, setTheme] = useState<Theme>(() => {
 		const savedTheme = localStorage.getItem("theme") as Theme
 		if (savedTheme === "light" || savedTheme === "dark") return savedTheme

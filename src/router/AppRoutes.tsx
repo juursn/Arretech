@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import { LoadingScreen } from "./LoadingScreen"
 
+// lazy carrega cada página sob demanda; Suspense mostra a espera durante o download.
 const Home = lazy(() =>
 	import("../pages/Home").then(m => ({ default: m.Home }))
 )
@@ -22,7 +23,7 @@ export function AppRoutes() {
 				<Route path="/" element={<Home />} />
 				<Route path="/Noticias" element={<Blog />} />
 				<Route path="/Servicos" element={<Services />} />
-				<Route path="/Admin" element={<Admin />} />
+				<Route path="/Admin/*" element={<Admin />} />
 				{/* Fallback para evitar erro caso digitem uma rota inexistente */}
 				<Route path="*" element={<Home />} />
 			</Routes>

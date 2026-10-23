@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+import { useSectionScroll } from "../../hooks/useSectionScroll"
 import { Footer } from "../../components/Footer/Footer"
 import { NavBar } from "../../components/NavBar/NavBar"
 import { services } from "../../data/services"
@@ -6,6 +8,7 @@ import { ServiceCard } from "./components/Card/ServiceCard"
 import { motion } from "motion/react"
 
 export function Services() {
+	useSectionScroll()
 	return (
 		<section className="flex flex-col bg-light dark:bg-dark min-h-screen">
 			<NavBar />
@@ -20,14 +23,14 @@ export function Services() {
 							className="cursor-pointer hover:underline hover:underline-offset-2 hover:decoration-2 decoration-sky-500"
 							key={service.id}
 						>
-							<a href={`#${service.id}`}>{service.label}</a>
+							<NavLink to={`/Servicos#${service.id}`}>{service.label}</NavLink>
 						</li>
 					))}
 				</ol>
 			</section>
 			{services.map(service => (
 				<section
-					className="flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
+					className="scroll-mt-20.5 flex justify-center w-full px-4 py-4 my-4 shadow-[0_0_5px_4px_rgba(0,0,0,0.1)] bg-light-glass dark:bg-dark-glass"
 					id={service.id}
 					key={service.id}
 				>
