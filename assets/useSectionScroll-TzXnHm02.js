@@ -1,0 +1,1 @@
+import{g as e,m as t,o as n}from"./index-DhBzQ1hz.js";var r=e(t(),1);function i(){let{hash:e,key:t}=n();(0,r.useEffect)(()=>{e&&document.getElementById(e.slice(1))?.scrollIntoView({behavior:`smooth`})},[e,t])}export{i as t};
