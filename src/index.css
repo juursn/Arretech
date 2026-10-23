@@ -20,6 +20,9 @@
 	.label-input {
 		@apply text-xs tracking-wider font-semibold uppercase text-slate-700 dark:text-slate-200;
 	}
+	.background{
+		@apply bg-light dark:bg-dark
+	}
 }
 
 * {

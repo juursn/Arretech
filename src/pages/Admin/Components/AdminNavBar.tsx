@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { NavLink } from "react-router-dom"
 import { useState } from "react"
+import { useAuth } from "../../../context/AuthContext"
 
 export function AdminNavBar() {
 	const linksAdmin = "flex flex-col text-white text-md gap-1"
@@ -16,17 +17,18 @@ export function AdminNavBar() {
 		"border-b border-white/20 py-2 text-[12px] font-extralight uppercase tracking-wide text-white/60 mt-2"
 	const { theme, toggleTheme } = useTheme()
 	const [isOpen, setIsOpen] = useState(false)
+	const logout = useAuth()
 
 	return (
-		<div className="bg-primary-blue dark:bg-card-black fixed top-0 left-0 w-full lg:w-64 h-auto lg:h-screen px-4 py-3 lg:py-6 z-50">
+		<div className="fixed top-0 left-0 z-50 w-full h-auto px-4 py-3 bg-primary-blue dark:bg-card-black lg:w-64 lg:h-screen lg:py-6">
 			{/* Topo / Header da Sidebar */}
 			<div className="flex items-center justify-between gap-3 text-sm lg:pb-4">
 				<div className="flex items-center gap-3">
 					<img src={logoArreTech} className="w-6.25" alt="Logo" />
-					<h2 className="font-bold text-white text-base">ArreTech Admin</h2>
+					<h2 className="text-base font-bold text-white">ArreTech Admin</h2>
 				</div>
 
-				<div className="flex items-center text-white text-lg space-x-3">
+				<div className="flex items-center space-x-3 text-lg text-white">
 					{/* Ícone do Tema (Visível em todas as telas) */}
 					<FontAwesomeIcon
 						icon={theme === "dark" ? faSun : faMoon}
@@ -37,7 +39,7 @@ export function AdminNavBar() {
 					{/* Botão Hambúrguer (Completamente oculto a partir de lg) */}
 					<button
 						type="button"
-						className="lg:hidden flex items-center justify-center p-1 cursor-pointer focus:outline-none"
+						className="flex items-center justify-center p-1 cursor-pointer lg:hidden focus:outline-none"
 						onClick={() => setIsOpen(prev => !prev)}
 					>
 						<FontAwesomeIcon
@@ -94,6 +96,12 @@ export function AdminNavBar() {
 						Notícias
 					</NavLink>
 				</div>
+				<button
+					onClick={logout.logout}
+					className="w-full py-2 mt-8 text-sm text-white transition-colors duration-300 bg-red-800 cursor-pointer hover:bg-red-700 hover:ring-2 hover:ring-white rounded-xl"
+				>
+					Logout
+				</button>
 			</div>
 		</div>
 	)

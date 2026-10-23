@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getToken } from "./authService"
 
 export const api = axios.create({
 	baseURL: import.meta.env.VITE_API_URL?.trim() || import.meta.env.BASE_URL,
@@ -7,19 +8,33 @@ export const api = axios.create({
 	transitional: { silentJSONParsing: false },
 })
 
+// Interceptor de requisições: adiciona o token JWT ao header Authorization, se existir
+api.interceptors.request.use(config => {
+	const token = getToken()
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`
+	}
+	return config
+})
+
+export default api
+
 export function getApiErrorMessage(error: unknown, fallback: string): string {
 	if (axios.isAxiosError(error)) {
+		if (error.response?.status === 401)
+			return "Autenticação necessária. Entre novamente."
+		if (error.response?.status === 403)
+			return "Você não tem permissão para realizar esta ação."
+		if (error.response?.status === 400)
+			return "Confira os campos informados e tente novamente."
+		if (error.response?.status === 404)
+			return "O registro solicitado não foi encontrado."
+		if (error.response?.status === 429)
+			return "Muitas tentativas. Aguarde e tente novamente."
 		if (error.code === "ECONNABORTED" || error.code === "ETIMEDOUT") {
-			return "A requisição demorou demais. Tente novamente."
+			return "O servidor demorou para responder. Tente novamente."
 		}
-		const status = error.response?.status
-		if (!error.response) return "Não foi possível conectar à API. Tente novamente."
-		if (status === 400 || status === 422) return "Verifique os dados informados e tente novamente."
-		if (status === 401 || status === 403) return "Você não tem permissão para realizar esta operação."
-		if (status === 404) return "O registro solicitado não foi encontrado."
-		if (status === 409) return "Os dados estão em conflito. Atualize a página e tente novamente."
-		if (status === 429) return "Muitas tentativas. Aguarde um pouco e tente novamente."
 		return fallback
 	}
-	return error instanceof Error && error.message.trim() ? error.message : fallback
+	return error instanceof Error ? error.message : fallback
 }

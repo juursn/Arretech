@@ -85,7 +85,7 @@ export function EditTestimonial({
 						/>
 
 						<button
-							className={`${isVisible === item.id ? `block` : `z-50 absolute bottom-0 left-0 shadow-[0px_-31px_100px_20px_rgba(0,0,0,0.7)] backdrop-blur-md bg-black/40`} cursor-pointer w-full py-1.5 text-sm transition-colors duration-200 ease-in hover:text-primary-blue`}
+							className={`${isVisible === item.id ? `block` : `z-50 absolute bottom-0 left-0  shadow-[0px_-31px_100px_20px_rgba(0,0,0,0.2)] dark:shadow-[0px_-31px_100px_20px_rgba(0,0,0,0.7)] backdrop-blur-md bg-white/10 dark:bg-black/40`} cursor-pointer text-gray-900 dark:text-gray-200 w-full py-1.5 text-sm transition-colors duration-200 ease-in hover:text-primary-blue`}
 							onClick={() =>
 								setIsVisible(currentId =>
 									currentId === item.id ? null : item.id

@@ -14,6 +14,7 @@ import { getNotices } from "../../api/notice"
 import { getApiErrorMessage } from "../../api/axios"
 import type { Testimonial } from "../../types/testImonial"
 import type { Notice } from "../../types/notice"
+import { RxReload } from "react-icons/rx"
 
 export function Admin() {
 	useSectionScroll()
@@ -27,13 +28,28 @@ export function Admin() {
 		const controller = new AbortController()
 		setIsLoading(true)
 		setErrors({ testimonials: "", notices: "" })
-		Promise.allSettled([getTestimonial(controller.signal), getNotices(controller.signal)]).then(([comments, news]) => {
+		Promise.allSettled([
+			getTestimonial(controller.signal),
+			getNotices(controller.signal),
+		]).then(([comments, news]) => {
 			if (controller.signal.aborted) return
 			if (comments.status === "fulfilled") setTestimonials(comments.value)
 			if (news.status === "fulfilled") setNotices(news.value)
 			setErrors({
-				testimonials: comments.status === "rejected" ? getApiErrorMessage(comments.reason, "Não foi possível carregar os depoimentos.") : "",
-				notices: news.status === "rejected" ? getApiErrorMessage(news.reason, "Não foi possível carregar as notícias.") : "",
+				testimonials:
+					comments.status === "rejected"
+						? getApiErrorMessage(
+								comments.reason,
+								"Não foi possível carregar os depoimentos."
+							)
+						: "",
+				notices:
+					news.status === "rejected"
+						? getApiErrorMessage(
+								news.reason,
+								"Não foi possível carregar as notícias."
+							)
+						: "",
 			})
 			setIsLoading(false)
 		})
@@ -51,19 +67,34 @@ export function Admin() {
 			{/* Conteúdo Principal */}
 			<main className="flex-1 w-full p-4 lg:p-6">
 				<AdminHero />
-				{isLoading && <p role="status">Carregando os dados...</p>}
+				{isLoading && <p role="status">Carregando os dados... </p>}
 				{errors.testimonials && <p role="alert">{errors.testimonials}</p>}
 				{errors.notices && <p role="alert">{errors.notices}</p>}
-				{(errors.testimonials || errors.notices) && <button type="button" onClick={() => setReload(value => value + 1)}>Tentar novamente</button>}
+				{(errors.testimonials || errors.notices) && (
+					<button
+						type="button"
+						className="px-4 py-2 text-white rounded-md bg-emerald-500"
+						onClick={() => setReload(value => value + 1)}
+					>
+						Tentar novamente <RxReload />
+					</button>
+				)}
 
 				{/* Seção de Criação */}
+
 				<section className="mt-6">
 					<Badge text="Criar" />
 					<div id="criar-comentarios" className="scroll-mt-24">
-						<CreateTestimonial disabled={testimonialsDisabled} onCreated={item => setTestimonials(current => [...current, item])} />
+						<CreateTestimonial
+							disabled={testimonialsDisabled}
+							onCreated={item => setTestimonials(current => [...current, item])}
+						/>
 					</div>
 					<div id="criar-noticias" className="scroll-mt-24">
-						<CreateNotice disabled={noticesDisabled} onCreated={item => setNotices(current => [...current, item])} />
+						<CreateNotice
+							disabled={noticesDisabled}
+							onCreated={item => setNotices(current => [...current, item])}
+						/>
 					</div>
 				</section>
 
@@ -71,20 +102,52 @@ export function Admin() {
 				<Badge text="Editar" />
 				<section>
 					<div id="editar-comentarios" className="scroll-mt-24">
-						<EditTestimonial testimonials={testimonials} disabled={testimonialsDisabled} onUpdated={updated => setTestimonials(current => current.map(item => String(item.id) === String(updated.id) ? updated : item))} />
+						<EditTestimonial
+							testimonials={testimonials}
+							disabled={testimonialsDisabled}
+							onUpdated={updated =>
+								setTestimonials(current =>
+									current.map(item =>
+										String(item.id) === String(updated.id) ? updated : item
+									)
+								)
+							}
+						/>
 					</div>
 					<div id="editar-noticias" className="scroll-mt-24">
-						<EditNotice notices={notices} disabled={noticesDisabled} onUpdated={updated => setNotices(current => current.map(item => item.id === updated.id ? updated : item))} />
+						<EditNotice
+							notices={notices}
+							disabled={noticesDisabled}
+							onUpdated={updated =>
+								setNotices(current =>
+									current.map(item => (item.id === updated.id ? updated : item))
+								)
+							}
+						/>
 					</div>
 				</section>
 				{/* Seção de Exclusão */}
 				<Badge text="Deletar" />
 				<div id="deletar-comentarios" className="scroll-mt-24">
-						<DeleteTestimonial testimonials={testimonials} disabled={testimonialsDisabled} onDeleted={id => setTestimonials(current => current.filter(item => String(item.id) !== String(id)))} />
-					</div>
+					<DeleteTestimonial
+						testimonials={testimonials}
+						disabled={testimonialsDisabled}
+						onDeleted={id =>
+							setTestimonials(current =>
+								current.filter(item => String(item.id) !== String(id))
+							)
+						}
+					/>
+				</div>
 				<div id="deletar-noticias" className="scroll-mt-24">
-						<DeleteNotice notices={notices} disabled={noticesDisabled} onDeleted={id => setNotices(current => current.filter(item => item.id !== id))} />
-					</div>
+					<DeleteNotice
+						notices={notices}
+						disabled={noticesDisabled}
+						onDeleted={id =>
+							setNotices(current => current.filter(item => item.id !== id))
+						}
+					/>
+				</div>
 			</main>
 		</div>
 	)
