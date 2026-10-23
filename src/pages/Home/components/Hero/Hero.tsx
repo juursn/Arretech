@@ -14,9 +14,9 @@ export const Hero = () => {
                 <h3 className="font-normal text-2xl">Soluções Inteligentes em IA</h3>
                 <p className="max-w-[70%] font-light text-lg">Somos uma software house especializada em sistemas de Inteligência Artificial, criando soluções inovadoras que transformam negócios e potencializam resultados.</p>
                 <div>
-                    <ul className="flex flex-wrap gap-5 justify-center items-center w-130 font-light text-xs text-[#2f91ff] list-disc list-inside sm:flex-nowrap sm:justify-start sm:w-145">
+                    <ul className="flex flex-wrap max-sm:gap-3 gap-5 justify-center items-center w-130 font-light text-[#2f91ff] list-disc list-inside sm:flex-nowrap sm:justify-start sm:w-145">
                         {listaSolucoes.map((solucao, index) => (
-                            <li key={index} className=" w-47 px-3 py-0.5 text-nowrap rounded-full border border-[#2f91ff] bg-[#1f1e27] transition-transform duration-300 hover:scale-110 cursor-default">
+                            <li key={index} className=" w-43 sm:w-47 px-3 py-0.5 text-[10px] text-nowrap rounded-full border border-[#2f91ff] bg-[#1f1e27] transition-transform duration-300 hover:scale-110 cursor-default">
                                 {solucao}
                             </li>
                         ))}
