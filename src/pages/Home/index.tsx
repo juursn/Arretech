@@ -126,7 +126,7 @@ export const Home = () => {
 			<main className="flex justify-center">
 				<Hero />
 			</main>
-			<aside className="flex flex-col items-center w-full mt-15">
+			<aside className="flex flex-col items-center w-full mt-15 ">
 				<div className="flex flex-col gap-15 w-[95%]">
 					<div className="flex flex-col items-center py-7 gap-10 border border-[#2F91FF] rounded-lg">
 						<h1
@@ -148,7 +148,7 @@ export const Home = () => {
 							</h1>
 						</div>
 						<div
-							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							className="flex w-full min-w-0 flex-row gap-5 mt-15 overflow-x-auto overflow-y-hidden scroll-smooth sm:flex-wrap sm:overflow-x-visible"
 							ref={carrosselRef1}
 							onScroll={verificarScroll}
 						>
@@ -215,7 +215,7 @@ export const Home = () => {
 								Construindo parcerias fortes e levando presença arretada para os
 								palcos da inovação tecnológica.
 							</p>
-							<div className="flex gap-10">
+							<div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-10">
 								<img
 									src={pesquisaai}
 									alt=""
@@ -252,7 +252,7 @@ export const Home = () => {
 							Conheça Nossos Serviços
 						</h1>
 						<div
-							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							className="flex w-full min-w-0 flex-row gap-5 mt-15 overflow-x-auto overflow-y-hidden scroll-smooth sm:flex-wrap sm:overflow-x-visible"
 							ref={carrosselRef2}
 							onScroll={verificarScroll}
 						>
@@ -306,14 +306,14 @@ export const Home = () => {
 							/>
 						</div>
 						<button
-							className="absolute flex right-10 mt-30"
+							className="absolute flex right-10 mt-30 "
 							onClick={() => rolar(carrosselRef2, 300)}
 						>
 							<CaretRightIcon />
 						</button>
 						{showLeft && (
 							<button
-								className="absolute flex left-10 mt-30"
+								className="absolute flex left-10 mt-30 "
 								onClick={() => rolar(carrosselRef2, -300)}
 							>
 								<CaretLeftIcon />
@@ -321,7 +321,7 @@ export const Home = () => {
 						)}
 					</div>
 					<div className="flex flex-col justify-center">
-						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
+						<h1 className="text-4xl text-center font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent ">
 							O que Nossos Clientes Dizem
 						</h1>
 						<div
@@ -386,7 +386,7 @@ export const Home = () => {
 						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Notícias Recentes
 						</h1>
-						<div className="flex flex-col gap-5 mt-5 max-w-[400px] sm:grid grid-cols-2 min-w-[658px]  lg:grid-cols-3 min-w-full">
+						<div className="mt-5 grid w-full min-w-0 grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 							{isLoadingContent && <p role="status">Carregando notícias...</p>}
 							{contentErrors.notices && (
 								<p role="alert">{contentErrors.notices}</p>

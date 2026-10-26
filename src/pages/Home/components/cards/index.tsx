@@ -9,7 +9,7 @@ interface CardsProps {
 
 export const Cards = ({ imagem, subtitulo, texto }: CardsProps) => {
     return (
-        <div className="home-card items-center">
+        <div className="home-card items-center ">
             {imagem}
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF]
                             via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
@@ -28,7 +28,7 @@ interface CardsProps2 {
 
 export const Cards2 = ({ imagem, subtitulo, texto, botao }: CardsProps2) => {
     return (
-        <div className="home-card items-center">
+        <div className="home-card items-center ">
             {imagem}
             <h3 className="text-2xl font-medium bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">{subtitulo}</h3>
             <p className="w-[85%] text-xl font-light">{texto}</p>
