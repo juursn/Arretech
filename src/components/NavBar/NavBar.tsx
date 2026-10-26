@@ -48,7 +48,7 @@ export const NavBar = () => {
 
 					<button
 						type="button"
-						className="nav-link-desktop cursor-pointer"
+						className="cursor-pointer nav-link-desktop"
 						onClick={scrollToContact}
 					>
 						Contato
@@ -68,7 +68,7 @@ export const NavBar = () => {
 					<button
 						onClick={toggleTheme}
 						aria-label="Alternar tema"
-						className="p-1 text-lg cursor-pointer hover:text-primary-blue rounded-md transition-all duration-300 ease-linear"
+						className="p-1 text-lg transition-all duration-300 ease-linear rounded-md cursor-pointer hover:text-primary-blue"
 					>
 						<FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
 					</button>
