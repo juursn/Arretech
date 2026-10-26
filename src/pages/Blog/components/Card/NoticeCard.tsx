@@ -4,7 +4,7 @@ import { NoticeTag } from "./NoticeTag"
 
 interface NoticeCardProps {
 	notice: Notice
-	onClick: (notice: Notice) => void
+	onClick?: (notice: Notice) => void
 }
 
 export function NoticeCard({ notice, onClick }: NoticeCardProps) {
@@ -12,7 +12,7 @@ export function NoticeCard({ notice, onClick }: NoticeCardProps) {
 	return (
 		<div
 			className="p-4 border border-black/5 dark:border-white/5 shadow-[0_0_8px_rgba(0,0,0,0.1)] max-w-full h-full box-border sm:max-w-110 rounded-2xl flex flex-col gap-4 hover:ring hover:ring-primary-blue/5 transition-all hover:-translate-y-1.5 duration-300 ease-out hover:shadow-[0_0_35px_rgba(0,0,0,0.1)] hover:cursor-pointer"
-			onClick={() => onClick(notice)}
+			onClick={() => onClick?.(notice)}
 		>
 			<div className="flex-1">
 				<h2 className="pb-2 text-xl font-bold text-primary-blue dark:text-white">

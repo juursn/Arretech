@@ -31,6 +31,8 @@ import { getNotices } from "../../api/notice"
 import { getApiErrorMessage } from "../../api/axios"
 import type { Testimonial } from "../../types/testImonial"
 import type { Notice } from "../../types/notice"
+import { NoticeCard } from "../Blog/components/Card/NoticeCard"
+import { NavLink } from "react-router-dom"
 
 export const Home = () => {
 	const [showElement, setShowElement] = useState(false)
@@ -106,7 +108,7 @@ export const Home = () => {
 	}
 
 	return (
-		<div className="w-full dark:bg-[#1f1e27] dark:text-white">
+		<div className="flex flex-col bg-light dark:bg-dark min-h-screen dark:text-slate-100">
 			{showElement && <NavBar />}
 			<header className=" flex flex-col items-center relative w-full pt-7 ">
 				<nav className="flex justify-center w-[95%]">
@@ -148,12 +150,12 @@ export const Home = () => {
 							</h1>
 						</div>
 						<div
-							className="flex w-full min-w-0 flex-row gap-5 mt-15 overflow-x-auto overflow-y-hidden scroll-smooth sm:flex-wrap sm:overflow-x-visible"
+							className="flex w-full justify-center min-w-0 flex-row gap-5 mt-15 overflow-x-auto scroll-smooth sm:flex-wrap sm:overflow-x-visible"
 							ref={carrosselRef1}
 							onScroll={verificarScroll}
 						>
 							<Cards
-								imagem={<FaBrain size={38} className="text-blue-500" />}
+								imagem={<FaBrain size={38} className="icon-gradient" />}
 								subtitulo="Inteligência Artificial"
 								texto="Desenvolvemos sistemas de IA personalizados que aprendem e se adaptam às necessidades do seu negócio."
 							/>
@@ -162,7 +164,7 @@ export const Home = () => {
 									<LightningIcon
 										size={38}
 										weight="fill"
-										className="text-blue-500"
+										className="icon-gradient"
 									/>
 								}
 								subtitulo="Desenvolvimento Ágil"
@@ -173,7 +175,7 @@ export const Home = () => {
 									<NetworkIcon
 										size={38}
 										weight="fill"
-										className="text-blue-500"
+										className="icon-gradient"
 									/>
 								}
 								subtitulo="Automação Inteligente"
@@ -184,7 +186,7 @@ export const Home = () => {
 									<UsersThreeIcon
 										size={38}
 										weight="fill"
-										className="text-blue-500"
+										className="icon-gradient"
 									/>
 								}
 								subtitulo="Suporte Especializado"
@@ -252,7 +254,7 @@ export const Home = () => {
 							Conheça Nossos Serviços
 						</h1>
 						<div
-							className="flex w-full min-w-0 flex-row gap-5 mt-15 overflow-x-auto overflow-y-hidden scroll-smooth sm:flex-wrap sm:overflow-x-visible"
+							className="flex w-full justify-center gap-5 mt-15 overflow-x-auto scroll-smooth sm:flex-wrap sm:overflow-x-visible"
 							ref={carrosselRef2}
 							onScroll={verificarScroll}
 						>
@@ -261,7 +263,7 @@ export const Home = () => {
 									<RobotIcon
 										size={38}
 										weight="fill"
-										className="text-blue-500"
+										className="icon-gradient"
 									/>
 								}
 								subtitulo="Chatbots Inteligentes"
@@ -269,19 +271,19 @@ export const Home = () => {
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={<FaEye size={38} className="text-blue-500" />}
+								imagem={<FaEye size={40} className="icon-gradient" />}
 								subtitulo="Visão Computacional"
 								texto="Sistemas de reconhecimento de imagem e análise visual para automação de processos industriais."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={<FaChartDiagram size={38} className="text-blue-500" />}
+								imagem={<FaChartDiagram size={40} className="icon-gradient" />}
 								subtitulo="Análise Preditiva"
 								texto="Modelos de machine learning para previsão de tendências e otimização de decisões estratégicas."
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={<LuChartLine size={38} className="text-blue-500" />}
+								imagem={<LuChartLine size={40} className="icon-gradient" />}
 								subtitulo="Business Intelligence"
 								texto="Dashboards inteligentes com insights automatizados para tomada de decisão baseada em dados."
 								botao="Saiba mais"
@@ -289,9 +291,9 @@ export const Home = () => {
 							<Cards2
 								imagem={
 									<FileTextIcon
-										size={38}
+										size={40}
 										weight="fill"
-										className="text-blue-500"
+										className="icon-gradient"
 									/>
 								}
 								subtitulo="Processamento de Texto"
@@ -299,14 +301,14 @@ export const Home = () => {
 								botao="Saiba mais"
 							/>
 							<Cards2
-								imagem={<FaShield size={38} className="text-blue-500" />}
+								imagem={<FaShield size={40} className="icon-gradient" />}
 								subtitulo="Segurança por IA"
 								texto="Sistemas de detecção de anomalias e prevenção de fraudes usando algoritmos avançados."
 								botao="Saiba mais"
 							/>
 						</div>
 						<button
-							className="absolute flex right-10 mt-30 "
+							className="absolute sm:hidden flex right-10 mt-30 "
 							onClick={() => rolar(carrosselRef2, 300)}
 						>
 							<CaretRightIcon />
@@ -325,7 +327,7 @@ export const Home = () => {
 							O que Nossos Clientes Dizem
 						</h1>
 						<div
-							className="relative flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
+							className="justify-center flex sm:flex-wrap  flex-row gap-5 mt-15 overflow-x-auto sm:overflow-x-visible scroll-smooth w-full"
 							ref={carrosselRef3}
 							onScroll={verificarScroll}
 						>
@@ -386,6 +388,17 @@ export const Home = () => {
 						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#4FB6FF] via-[#235FC7] to-[#3E5BDD] bg-clip-text text-transparent">
 							Notícias Recentes
 						</h1>
+						<div className="flex">
+							<p>
+								Acompanhe Nossa notícias{" "}
+								<NavLink
+									to="/Noticias"
+									className="cursor-pointer hover:underline"
+								>
+									saber mais...
+								</NavLink>
+							</p>
+						</div>
 						<div className="mt-5 grid w-full min-w-0 grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 							{isLoadingContent && <p role="status">Carregando notícias...</p>}
 							{contentErrors.notices && (
@@ -398,13 +411,7 @@ export const Home = () => {
 								.toSorted((a, b) => b.date.localeCompare(a.date))
 								.slice(0, 3)
 								.map(item => (
-									<Cards4
-										key={item.id}
-										imagem={item.imageUrl}
-										data={item.date}
-										tipo={item.tag}
-										texto={item.title}
-									/>
+									<NoticeCard key={item.id} notice={item} />
 								))}
 						</div>
 					</div>
@@ -415,15 +422,15 @@ export const Home = () => {
 						<div className="flex flex-col gap-4">
 							<Cards5
 								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
-								imagem={<IoChevronDownSharp className="text-blue-500" />}
+								imagem={<IoChevronDownSharp className="icon-gradient" />}
 							/>
 							<Cards5
 								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
-								imagem={<IoChevronDownSharp className="text-blue-500" />}
+								imagem={<IoChevronDownSharp className="icon-gradient" />}
 							/>
 							<Cards5
 								texto="Quanto tempo leva para implementar um projeto de Inteligência Artificial?"
-								imagem={<IoChevronDownSharp className="text-blue-500" />}
+								imagem={<IoChevronDownSharp className="icon-gradient" />}
 							/>
 						</div>
 					</div>

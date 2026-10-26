@@ -73,7 +73,7 @@ export function Admin() {
 				{(errors.testimonials || errors.notices) && (
 					<button
 						type="button"
-						className="px-4 py-2 text-white rounded-md bg-emerald-500"
+						className="flex px-4 py-2 text-sm text-white rounded-md bg-emerald-500"
 						onClick={() => setReload(value => value + 1)}
 					>
 						Tentar novamente <RxReload />
