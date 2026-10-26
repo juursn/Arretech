@@ -5,25 +5,38 @@ export const Hero = () => {
     const listaSolucoes = ["Machine Learning", "Automação Inteligente", "Soluções Personalizadas"]
 
     return (
-        <div className="flex flex-col items-center text-center w-[85%] gap-5 top-45 text-white absolute sm:top-40 sm:items-start sm:text-start">
+
+        <div className="absolute top-45 sm:top-40 flex w-[90%] max-w-full flex-col items-center gap-10 text-center text-white sm:items-start sm:text-start">
             <div className="flex items-baseline">
-                <img src={titulo} alt="titulo" className="w-[80px]" />
-                <h1 className="font-semibold text-4xl">RRETECH</h1>
+                <img src={titulo} alt="Logo Arretech" className="w-[60px] sm:w-[80px]" />
+                <h1 className="text-4xl font-semibold">RRETECH</h1>
             </div>
-            <div className="flex flex-col items-center gap-5 sm:items-start">
-                <h3 className="font-normal text-2xl">Soluções Inteligentes em IA</h3>
-                <p className="max-w-[70%] font-light text-lg">Somos uma software house especializada em sistemas de Inteligência Artificial, criando soluções inovadoras que transformam negócios e potencializam resultados.</p>
-                <div>
-                    <ul className="flex flex-wrap gap-5 justify-center items-center w-130 font-light text-xs text-[#2f91ff] list-disc list-inside sm:flex-nowrap sm:justify-start sm:w-145">
-                        {listaSolucoes.map((solucao, index) => (
-                            <li key={index} className=" w-47 px-3 py-0.5 text-nowrap rounded-full border border-[#2f91ff] bg-[#1f1e27] transition-transform duration-300 hover:scale-110 cursor-default">
-                                {solucao}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <button className="max-w-90 bg-[#2f91ff] text-white text-2xl py-3 px-5 rounded-2xl transition-transform duration-300 hover:bg-[#1e70d2] cursor-pointer">Conheça nossas soluções</button>
+
+            <div className="flex w-full min-w-0 flex-col items-center gap-5 sm:items-start">
+                <h3 className="text-2xl font-normal">
+                    Soluções Inteligentes em IA
+                </h3>
+
+                <p className="w-full max-w-[70%] text-lg font-light max-sm:max-w-full">
+                    Somos uma software house especializada em sistemas de Inteligência Artificial, criando soluções inovadoras que transformam negócios e potencializam resultados.
+                </p>
+
+                <ul className="flex w-full min-w-0 flex-wrap items-center justify-center gap-3 font-light text-[#2f91ff] sm:justify-start">
+                    {listaSolucoes.map((solucao, index) => (
+                        <li
+                            key={index}
+                            className="max-w-full rounded-full border border-[#2f91ff] bg-[#1f1e27] px-3 py-1 text-center text-[10px] transition-transform duration-300 hover:scale-105 cursor-default"
+                        >
+                            {solucao}
+                        </li>
+                    ))}
+                </ul>
+
+                <button className="w-full max-w-[360px] rounded-2xl bg-[#2f91ff] px-4 py-3 text-xl text-white transition-colors duration-300 hover:bg-[#1e70d2] cursor-pointer sm:w-auto sm:text-2xl">
+                    Conheça nossas soluções
+                </button>
             </div>
         </div>
+
     )
 }
