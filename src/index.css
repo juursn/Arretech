@@ -162,3 +162,15 @@ html,
 	color: transparent;
 	fill: currentColor;
 }
+
+@layer utilities {
+  /* Esconder scrollbar no Chrome, Safari e Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Esconder scrollbar no IE, Edge e Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
