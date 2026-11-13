@@ -9,7 +9,7 @@
 		@apply text-2xl font-bold text-primary-blue dark:text-white;
 	}
 	.home-card {
-		@apply flex justify-center text-center min-w-[400px] flex-1 flex-col gap-4 py-4 px-6 rounded-xl shadow-xl hover:scale-105 transition-transform duration-300;
+		@apply flex grow-0 shrink-0 w-80 flex-col gap-4 py-4 px-6 rounded-xl dark:border hover:scale-105 transition-transform duration-300 dark:border-white/5 hover:shadow-[0_0_35px_rgba(0,0,0,0.1)]  shadow-[0_0_8px_rgba(0,0,0,0.1)];
 	}
 	.nav-link-desktop {
 		@apply transition-all ease-out duration-300 hover:scale-105 hover:text-gradient-purple;
@@ -20,8 +20,8 @@
 	.label-input {
 		@apply text-xs tracking-wider font-semibold uppercase text-slate-700 dark:text-slate-200;
 	}
-	.background{
-		@apply bg-light dark:bg-dark
+	.background {
+		@apply bg-light dark:bg-dark;
 	}
 }
 
