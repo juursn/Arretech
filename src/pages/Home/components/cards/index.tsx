@@ -81,18 +81,16 @@ interface CardsProps4 {
 }
 
 export const Cards4 = ({ imagem, data, tipo, texto }: CardsProps4) => {
-	return (
-		<div className="flex justify-center flex-1 flex-col gap-5 pb-5 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300 ">
-			<img src={imagem} alt="" />
-			<div className="flex justify-between px-6 py-2">
-				<p>{data}</p>
-				<p className="py-1 px-4 text-white bg-[#2F91FF] rounded-lg hover:bg-[#1e70d2] cursor-pointer">
-					{tipo}
-				</p>
-			</div>
-			<p className="px-6">{texto}</p>
-		</div>
-	)
+    return (
+        <div className="flex justify-center flex-1 flex-col gap-5 pb-5 rounded-xl shadow-xl  hover:scale-105 transition-transform duration-300">
+            <img src={imagem} alt="" className="" />
+            <div className="flex justify-between px-6 py-2">
+                <p>{data}</p>
+                <p className="py-1 px-4 text-white bg-[#2F91FF] rounded-lg hover:bg-[#1e70d2] cursor-pointer">{tipo}</p>
+            </div>
+            <p className="px-6">{texto}</p>
+        </div>
+    )
 }
 
 interface CardsProps5 {
